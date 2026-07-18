@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Online Shop</title>
+        <link rel = "stylesheet" href = "login.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- cabeçalho da página -->
+        <header>
+            <div id = "header-content">
+                <img id = "online-shop-logo" alt = "logo da Online Shop" 
+                src = "images/online_shop_logo_icon.jpg">
+                <div>   
+                    <h1 id = "header-title">
+                        Online Shop
+                    </h1>
+                    <p id = "header-subtitle">
+                        A melhor para o consumidor online
+                    </p>
+                </div>
+            </div>
+
+            <hr id = "header-divisor-bar">
+        </header>
+
+        <!-- Seção de login -->
+        <section id = "login-section">
+            
+            <form id = "login-form" name = "LoginForm">
+                <fieldset id = "login-fields" name = "LoginFields">
+                    <label class = "field-style">
+                        <div class = "field-description">
+                            Seu email
+                        </div>
+
+                        <input type = "email" name = "user_email" required
+                        class = "input-style" placeholder = "nome@exemplo.com">
+                    </label>
+
+                    <label class = "field-style">
+                        <div class = "field-description">
+                            Sua senha
+                        </div>
+                        
+                        <div id = "password-field">
+                            <input id = "user-pass" type = "password" name = "user_pass"
+                            class = "input-style">
+                            <button id = "alter-pass-visibility-btn"
+                            type = "button">
+                                <span id = "alt-pass-icon" class="material-icons">
+                                    visibility
+                                </span>
+                            </button>
+                        </div>
+                    </label>
+                    
+                    <label id = "remember-me-field">
+                        <input type = "checkbox">
+                        lembre de mim
+                    </label>
+                </fieldset>
+
+                <span id = "form-validation-msg"></span>
+
+                <div id = "login-form-buttons">
+                    <button id = "submit-btn" type = "submit">
+                        LOGIN
+                    </button>
+                </div>
+            </form>
+
+            <p id = "no-account-msg">
+                Não possui uma conta cadastrada? 
+                <a href = "https://www.google.com">
+                    Clique aqui
+                </a>
+            </p>
+        </section>
+
+        <script src = "login_validation.js" type = "module"></script>
+        <script src = "alter_pass_visibility.js" type = "module"></script>
+    </body>
+</html>
