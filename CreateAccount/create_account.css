@@ -11,9 +11,14 @@ main {
     border: solid red;
 }
 
+button {
+    cursor: pointer;
+}
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(
+    'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'
+);
 
 /* Banner ilustrativo da página */
 #create-account-banner {
@@ -36,6 +41,7 @@ main {
 /* Área para criação da conta - cabeçalho */
 #create-account-header {
     border: solid black; display: flex; justify-content: center;
+    margin-bottom: 25px;
 }
 
 #online-shop-logo {
@@ -60,24 +66,25 @@ main {
 
 #form-title {
     border: solid blue; display: flex; flex-direction: column;
-    padding-left: 200px; gap: 10px;
+    padding-left: 170px; gap: 10px;
 }
 
 #title {
-    margin-bottom: 0px; 
+    margin-bottom: 0px; margin: 0px;
     
     font-family: "Poppins", sans-serif; font-weight: 700; font-style: normal
 }
 
 #subtitle {
-    margin-top: 0px;
+    color: #584f4f; margin: 0px;
 
     font-family: "Poppins", sans-serif; font-weight: 400; font-style: normal; 
 }
 
 #create-account-form {
-    border: solid blue; margin-top: 20px; display: flex;
-    flex-direction: column; align-items: center; gap: 30px
+    border: solid blue; margin-top: 20px; margin-bottom: 30px; 
+    display: flex; flex-direction: column; align-items: center; 
+    gap: 30px
 }
 
 #main-account-datas {
@@ -86,15 +93,76 @@ main {
 
 .form-label {
     display: flex; flex-direction: column; gap: 5px;
-    align-items: flex-start;
+    align-items: flex-start; font-family: "Inter", sans-serif;
+    font-weight: 400
 }
 
+.field-input {
+    border: 1px solid black; width: 250px; height: 35px;
+    border-radius: 7px; font-size: 17px; padding-left: 10px;
+}
+
+/* Aplicação da animação para cada um dos campos */
+#input-name {
+    opacity: 1; transition: opacity 0.5s
+} #input-email {
+    opacity: 1; transition: opacity 1s
+} #input-pass {
+    opacity: 1; transition: opacity 1.5s
+} #input-confirm-pass {
+    opacity: 1; transition: opacity 2s
+}
+
+@starting-style {
+    #input-name {
+        opacity: 0;
+    } #input-email {
+        opacity: 0;
+    } #input-pass {
+        opacity: 0;
+    } #input-confirm-pass {
+        opacity: 0;
+    }
+}
+
+.field-input:hover {
+    background-color: rgb(238, 232, 232);
+}
+
+/* Formulário - Campo de senha */
 #password-field {
     display: flex; gap: 10px;
 }
 
+#alter-pass-visibility-btn {
+    background: transparent; padding: 0px; border: none;
+
+    transition: scale 0.5s;
+}
+
+#alter-pass-visibility-btn:hover {
+    scale: 110%;
+}
+
 #usage-terms-field {
     display: flex; gap: 5px; align-items: center;
+}
+
+#usage-terms-msg {
+    font-family: "Inter", sans-serif; font-weight: 400
+}
+
+/* Formulário - Botão para enviar informações */
+#submit-btn {
+    border: none; background-color: #0fbcd6;
+    width: 100px; height: 30px; border-radius: 10px;
+    font-family: "Inter", sans-serif; font-weight: 600;
+
+    transition: scale 0.5s;
+}
+
+#submit-btn:hover {
+    scale: 110%;
 }
 
 
@@ -104,13 +172,16 @@ main {
 }
 
 #login-divisor {
-    display: flex; justify-content: center; align-items: center;
-    align-items: center; gap: 40px;
+    display: flex; justify-content: center; align-items: center; gap: 40px;
 }
 
 .login-divisor-bar {
-    border: 1px solid black; width: 150px; height: 0px;
+    border: 1px solid black; width: 145px; height: 0px;
     margin: 0px
+}
+
+#login-divisor-msg {
+    font-family: "Inter", sans-serif; font-weight: 400
 }
 
 #other-login-options {
@@ -119,9 +190,26 @@ main {
 
 /* Botão de realização de login pela conta do google */
 #google-login-btn{
-    display: flex; align-items: center; gap: 10px;
+    display: flex; gap: 10px; border: 2px solid black; 
+    padding-left: 0px; padding-right: 0px; padding-top: 5px; padding-bottom: 5px;
+    
+    width: 140px; border-radius: 20px; background-color: white;
+    align-items: center; justify-content: center;
+    font-family: "Inter", sans-serif; font-weight: 600;
+
+    transition: scale 0.5s;
+}
+
+#google-login-btn:hover {
+    scale: 110%;
 }
 
 #google-logo {
     width: 25px; height: 25px;
+}
+
+
+/* Mensagem de outra opção */
+#alredy-account-msg {
+    text-align: center; font-family: "Inter", sans-serif
 }

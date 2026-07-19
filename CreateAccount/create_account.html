@@ -6,6 +6,7 @@
         <title>Online Shop</title>
 
         <link rel = "stylesheet" href = "create_account.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
     <body>
@@ -44,29 +45,21 @@
                     <div id = "main-account-datas">
                         <label class = "form-label">
                             Nome completo
-                            <input class = "field-input" type = "text"
+                            <input id = "input-name" class = "field-input" type = "text"
                             name = "name">
                         </label>
 
                         <label class = "form-label">
                             Email
-                            <input class = "field-input" type = "email"
+                            <input id = "input-email" class = "field-input" type = "email"
                             name = "email">
                         </label>
 
                         <label class = "form-label">
                             Senha
-                            <input class = "field-input" type = "password"
-                            name = "password">
-                        </label>
-
-                        <label class = "form-label">
-                            Confirme sua senha
-                            <!-- Agrupamento do input de senha com 
-                                o botão de alterar visibilidade -->
                             <div id = "password-field">
-                                <input class = "field-input" type = "password"
-                                name = "confirm_password">
+                                <input id = "input-pass" class = "field-input" type = "password"
+                                name = "password">
 
                                 <button id = "alter-pass-visibility-btn"
                                 type = "button">
@@ -75,6 +68,14 @@
                                     </span>
                                 </button>
                             </div>
+                        </label>
+
+                        <label class = "form-label">
+                            <!-- Agrupamento do input de senha com 
+                                o botão de alterar visibilidade -->
+                            Confirme sua senha
+                            <input id = "input-confirm-pass" class = "field-input" 
+                            type = "password" name = "confirm_password">
                         </label>
                     </div>
 
@@ -119,7 +120,10 @@
             </section>
 
             <p id = "alredy-account-msg">
-
+                Já é cadastrado? <a 
+                href = "Estudo/desenvolvimento_web/Login/login.html">
+                    Entre aqui
+                </a>
             </p>
         </main>
     
