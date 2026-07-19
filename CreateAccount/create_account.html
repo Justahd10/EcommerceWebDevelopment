@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shop</title>
+
+        <link rel = "stylesheet" href = "create_account.css">
+    </head>
+
+    <body>
+        <!-- Área de ilustração da página  -->
+        <main id = "create-account-banner">
+            <div id = "">
+            </div>
+            
+            <div id = "">
+            </div>
+        </main>
+
+        <!-- Área de criação de conta -->
+        <main id = "create-account-content">
+            <header id = "create-account-header">
+                <img id = "online-shop-logo" alt = "Logo da Online Shop"
+                src = "images/online_shop_logo_icon.jpg">
+                <h1 id = "logo-title">
+                    Online Shop
+                </h1>
+            </header>
+
+            <section id = "create-account-section">
+                <div id = "form-title">
+                    <h2 id = "title">
+                        Crie sua conta
+                    </h2>
+                    <p id = "subtitle">
+                        e veja o que a nossa loja tem a oferecer
+                    </p>
+                </div>
+
+
+                <form id = "create-account-form">
+                    <!-- Agrupamento dos principais campos -->
+                    <div id = "main-account-datas">
+                        <label class = "form-label">
+                            Nome completo
+                            <input class = "field-input" type = "text"
+                            name = "name">
+                        </label>
+
+                        <label class = "form-label">
+                            Email
+                            <input class = "field-input" type = "email"
+                            name = "email">
+                        </label>
+
+                        <label class = "form-label">
+                            Senha
+                            <input class = "field-input" type = "password"
+                            name = "password">
+                        </label>
+
+                        <label class = "form-label">
+                            Confirme sua senha
+                            <!-- Agrupamento do input de senha com 
+                                o botão de alterar visibilidade -->
+                            <div id = "password-field">
+                                <input class = "field-input" type = "password"
+                                name = "confirm_password">
+
+                                <button id = "alter-pass-visibility-btn"
+                                type = "button">
+                                    <span class = "material-icons">
+                                        visibility
+                                    </span>
+                                </button>
+                            </div>
+                        </label>
+                    </div>
+
+                    <label id = "usage-terms-field">
+                        <input id = "checkbox-input" type = "checkbox"
+                        name = "confirm_usage_terms">
+
+                        <div id = "usage-terms-msg">
+                            Concordo com os 
+                            <a href = "">
+                                Termos de serviço
+                            </a> e
+                            <a href = "">
+                                Política de Privacidade
+                            </a>
+                        </div>
+                    </label>
+
+                    <button id = "submit-btn" type = "submit">
+                        CADASTRAR
+                    </button>
+                </form>
+            </section>
+
+            <section id = "login-options-section">
+                <div id = "login-divisor">
+                    <hr class = "login-divisor-bar">
+                    <p id = "login-divisor-msg">
+                        ou faça login de outra forma
+                    </p>
+                    <hr class = "login-divisor-bar">
+                </div>
+
+                <div id = "other-login-options">
+                    <button id = "google-login-btn" class = "login-option-btn" 
+                    type = "button">
+                        <img id = "google-logo" src ="images/google_logo_icon.png"
+                        alt = "Ícone da logo da Google">
+                        Google
+                    </button>
+                </div>
+            </section>
+
+            <p id = "alredy-account-msg">
+
+            </p>
+        </main>
+    
+        <script></script>
+    </body>
+</html>
