@@ -29,7 +29,6 @@ document.getElementById("create-account-section")
 // Gatilho de evento de click na seção de login alternativo
 document.getElementById("login-options-section")
 .addEventListener("click", (event) => {
-
     if (
         event.target.closest("button")?.id ===
         "google-login-btn"

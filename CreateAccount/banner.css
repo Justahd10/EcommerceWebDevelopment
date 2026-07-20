@@ -76,6 +76,19 @@ img {
 
 .product-name {
     font-size: 25px; color: white; font-family: Calibri; margin: 0px;
+    display: flex; flex-direction: column; gap: 5px
+}
+
+.product-price {
+    display: flex; gap: 10px;
+}
+
+.product-price1 {
+    font-size: 30px; font-weight: 800; color: rgb(73, 72, 72);
+}
+
+.product-price2 {
+    font-weight: 800; font-size: 30px; letter-spacing: 1px;
 }
 
 
