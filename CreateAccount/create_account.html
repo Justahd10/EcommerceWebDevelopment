@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Online Shop</title>
 
-        <link rel = "stylesheet" href = "form_section.css">
+        <link rel = "stylesheet" href = "create_account.css">
         <link rel = "stylesheet" href = "banner.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
@@ -22,11 +22,11 @@
             <div id = "products-carousel">
                 <div class = "product">
                     <div class = "product-card">
-                        <img src = "images/caderno.png" class = "product-img"
+                        <img src = "images/caixa_som.png" class = "product-img"
                         alt = "Imagem de um produto da loja Online Shop">
                     </div>
                     <p class = "product-name">
-                        Caderno inteligente pastel
+                        Caixa de som multimidia Bluetooth
                     </p>
                 </div>
 
@@ -83,11 +83,11 @@
 
                 <div class = "product">
                     <div class = "product-card">
-                        <img src = "images/caderno.png" class = "product-img"
+                        <img src = "images/caixa_som.png" class = "product-img"
                         alt = "Imagem de um produto da loja Online Shop">
                     </div>
                     <p class = "product-name">
-                        Caderno inteligente pastel
+                        Caixa de som multimidia Bluetooth
                     </p>
                 </div>
  
@@ -159,19 +159,19 @@
                     </p>
                 </div>
 
-                <form id = "create-account-form">
+                <form id = "create-account-form" name = "CreateAccount">
                     <!-- Agrupamento dos principais campos -->
                     <div id = "main-account-datas">
                         <label class = "form-label">
                             Nome completo
                             <input id = "input-name" class = "field-input" type = "text"
-                            name = "name">
+                            name = "name" autocomplete = "name">
                         </label>
 
                         <label class = "form-label">
                             Email
                             <input id = "input-email" class = "field-input" type = "email"
-                            name = "email">
+                            name = "email" autocomplete = "email">
                         </label>
 
                         <label class = "form-label">
@@ -182,7 +182,8 @@
 
                                 <button id = "alter-pass-visibility-btn"
                                 type = "button">
-                                    <span class = "material-icons">
+                                    <span id = "visibility-icon" 
+                                    class = "material-icons">
                                         visibility
                                     </span>
                                 </button>
@@ -196,6 +197,9 @@
                             <input id = "input-confirm-pass" class = "field-input" 
                             type = "password" name = "confirm_password">
                         </label>
+
+                        <span id = "form-validation-msg">
+                        </span>
                     </div>
 
                     <label id = "usage-terms-field">
@@ -223,7 +227,7 @@
                 <div id = "login-divisor">
                     <hr class = "login-divisor-bar">
                     <p id = "login-divisor-msg">
-                        ou faça login de outra forma
+                        ou faça entre de outra forma
                     </p>
                     <hr class = "login-divisor-bar">
                 </div>
@@ -245,7 +249,8 @@
                 </a>
             </p>
         </main>
-    
-        <script></script>
+        
+        <script src = "scripts/buttons.js"></script>
+        <script src = "scripts/account_creation_validation.js"></script>
     </body>
 </html>

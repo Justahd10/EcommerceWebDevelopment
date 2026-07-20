@@ -10,16 +10,6 @@ const users = [
         "status": "active",
         "id": "1"
     },
-    {
-        "username": "Jailyn33",
-        "fname": "Alfreda",
-        "lname": "Prosacco",
-        "email": "Ettie_Ledner19@hotmail.com",
-        "pass": "zqEjAJdhpGr3L1b",
-        "created_at": 1784138439,
-        "status": "active",
-        "id": "2"
-    },
 ]
 
 // Acessa o seação de login

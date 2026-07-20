@@ -40,7 +40,7 @@ img {
 
 /* Carrosel de produtos */
 #products-carousel {
-    display: flex; gap: 20px; top: 15%; position: absolute;
+    display: flex; top: 15%; position: absolute;
 
     opacity: 1; transition: opacity 2s;
     animation: 20s linear infinite running carousel-moving;
@@ -57,7 +57,7 @@ img {
         translate: 0%;
     }
     to {
-        translate: -2828px;
+        translate: -50%;
     }
 }
 
@@ -65,18 +65,17 @@ img {
 /* Corresal de produtos - Exibição de um produto */
 .product-card {
     background-color: white; border-radius: 10px; width: 450px;
-    display: flex; justify-content: center;
+    display: flex; justify-content: center; scale: 70%;
 
     box-shadow: 1px 6px 12px;
 }
 
 .product {
-    display: flex; flex-direction: column; gap: 25px;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
 }
 
 .product-name {
-    font-size: 25px; color: white; font-family: Calibri;
+    font-size: 25px; color: white; font-family: Calibri; margin: 0px;
 }
 
 

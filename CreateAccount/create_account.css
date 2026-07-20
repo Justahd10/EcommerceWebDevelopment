@@ -40,7 +40,7 @@ button {
 
 #form-title {
     display: flex; flex-direction: column;
-    padding-left: 170px; gap: 10px; margin-top: 40px; 
+    padding-left: 170px; gap: 10px; margin-top: 20px; 
     margin-bottom: 40px
 }
 
@@ -57,8 +57,7 @@ button {
 }
 
 #create-account-form {
-    margin-top: 20px; display: flex; 
-    flex-direction: column; align-items: center; 
+    margin-top: 10px; display: flex; flex-direction: column; align-items: center; 
     gap: 30px
 }
 
@@ -73,8 +72,13 @@ button {
 }
 
 .field-input {
-    border: 1px solid black; width: 250px; height: 35px;
+    border: 1px solid black; width: 250px; height: 30px;
     border-radius: 7px; font-size: 17px; padding-left: 10px;
+}
+
+#form-validation-msg {
+    color: red; font-family: "Inter", sans-serif; font-size: 15px;
+    text-align: center;
 }
 
 /* Aplicação da animação para cada um dos campos */
@@ -182,5 +186,5 @@ button {
 
 /* Mensagem de outra opção */
 #alredy-account-msg {
-    text-align: center; font-family: "Inter", sans-serif
+    margin-top: 0px; text-align: center; font-family: "Inter", sans-serif
 }

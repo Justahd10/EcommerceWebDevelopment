@@ -93,7 +93,7 @@ form {
 }
 
 .input-style {
-    width: 200px; height: 25px; border-radius: 5px; padding: 10px; 
+    width: 200px; height: 20px; border-radius: 5px; padding: 10px; 
     border: 1px solid black; font-family: arial; font-size: 17px;
 }
 
@@ -107,6 +107,12 @@ form {
 
 #alter-pass-visibility-btn {
     background: transparent; padding: 0px; border: none;
+
+    transition: scale 0.5s;
+}
+
+#alter-pass-visibility-btn:hover {
+    scale: 110%;
 }
 
 /* Conteúdo interno do formulário de login - Checkbox */
