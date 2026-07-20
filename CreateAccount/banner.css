@@ -75,8 +75,8 @@ img {
 }
 
 .product-name {
-    font-size: 25px; color: white; font-family: Calibri; margin: 0px;
-    display: flex; flex-direction: column; gap: 5px
+    font-size: 25px; width: 300px; color: white; font-family: Calibri; 
+    margin: 0px; display: flex; flex-direction: column; gap: 5px;
 }
 
 .product-price {
