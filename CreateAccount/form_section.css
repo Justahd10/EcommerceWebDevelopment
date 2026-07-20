@@ -130,7 +130,7 @@ button {
 /* Formulário - Botão para enviar informações */
 #submit-btn {
     border: none; background-color: #0fbcd6;
-    width: 100px; height: 30px; border-radius: 10px;
+    width: 100px; height: 30px; border-radius: 20px;
     font-family: "Inter", sans-serif; font-weight: 600;
 
     transition: scale 0.5s;

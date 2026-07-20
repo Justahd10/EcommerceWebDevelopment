@@ -23,6 +23,8 @@ const users = [
 ]
 
 // Acessa o seação de login
+const login_section = document.getElementById("login-section")
+// Acessa o formulário de login
 const login_form = document.getElementById("login-form")
 // Acessa o <span> para mensagens de erro
 const login_err_msg = document.getElementById("form-validation-msg")
