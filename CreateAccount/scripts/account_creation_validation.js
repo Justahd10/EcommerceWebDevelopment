@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("submit", (event) => {
         event.preventDefault()
 
-        const validated = check_fields_values(form)
-        console.log(validated)
+        check_fields_values(form)
     })
 })

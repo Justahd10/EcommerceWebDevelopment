@@ -92,6 +92,20 @@ img {
 }
 
 
+/* Logo da ONline Shop alternativa */
+#alternative-logo {
+    display: flex; position: absolute; top: 60%; left: 30%;
+}
+
+#online-shop-logo2 {
+    height: 200px;
+}
+
+#online-shop-title {
+    margin: 0px; font-size: 50px; color: #0d3251;  display: flex;
+    font-family: "Poppins", sans-serif; align-items: center;
+}
+
 /* Onda de corativa */
 #wave1 {
     height: 20%; width: 100%; background-color: #044a72;

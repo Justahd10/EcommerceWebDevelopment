@@ -144,7 +144,7 @@ form {
 
 /* Botão de login pelo google */
 #google-login-btn {
-    display: flex; align-items: center; width: 250px; padding-right: 3%;
+    display: flex; align-items: center; width: 325px; padding-right: 5%;
     padding-top: 5px; padding-bottom: 5px; background-color: white;
     border: none; border-radius: 5px; justify-content: space-between;
 

@@ -12,7 +12,7 @@
 
     <body>
         <!-- Área de ilustração da página  -->
-        <main id = "create-account-banner">
+        <aside id = "create-account-banner">
             <header id = "banner-header">
                 <h1 id = "banner-title">
                     As melhores marcas estão aqui!
@@ -178,10 +178,17 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Logo alternativa da loja -->
+            <div id = "alternative-logo">
+                <img id = "online-shop-logo2" src = "images/logo_online-shop2.png">
+                <h3 id = "online-shop-title">Online Shop</h3>
+            </div>
 
+            <!-- Bordas de ilustração -->
             <div id = "wave1"></div>
             <div id = "wave2"></div>
-        </main>
+        </aside>
 
         <!-- Área de criação de conta -->
         <main id = "create-account-content">
@@ -200,21 +207,21 @@
                     <div id = "main-account-datas">
                         <label class = "form-label">
                             Nome completo
-                            <input id = "input-name" class = "field-input" type = "text"
+                            <input class = "field-input" type = "text"
                             name = "name" autocomplete = "name">
                         </label>
 
                         <label class = "form-label">
                             Email
-                            <input id = "input-email" class = "field-input" type = "email"
+                            <input class = "field-input" type = "email"
                             name = "email" autocomplete = "email">
                         </label>
 
                         <label class = "form-label">
                             Senha
                             <div id = "password-field">
-                                <input id = "input-pass" class = "field-input" type = "password"
-                                name = "password">
+                                <input id = "input-pass" class = "field-input" 
+                                type = "password" name = "password">
 
                                 <button id = "alter-pass-visibility-btn"
                                 type = "button">
@@ -230,7 +237,7 @@
                             <!-- Agrupamento do input de senha com 
                                 o botão de alterar visibilidade -->
                             Confirme sua senha
-                            <input id = "input-confirm-pass" class = "field-input" 
+                            <input class = "field-input" 
                             type = "password" name = "confirm_password">
                         </label>
 
@@ -244,10 +251,10 @@
 
                         <div id = "usage-terms-msg">
                             Concordo com os 
-                            <a href = "">
+                            <a href = "#">
                                 Termos de serviço
                             </a> e
-                            <a href = "">
+                            <a href = "#">
                                 Política de Privacidade
                             </a>
                         </div>
