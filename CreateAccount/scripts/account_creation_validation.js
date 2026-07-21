@@ -12,6 +12,10 @@ const users = [
     },
 ]
 
+
+// Acessar o <span> de mensagem de erro
+const err_msg = document.getElementById("form-validation-msg")
+
 // Validar os formatos dos valores de email e senha
 function check_values_formats(
     email, pass, confirm_pass, err_span
@@ -39,6 +43,7 @@ function check_values_formats(
         return false
     }
 
+    err_span.textContent = ""
     return true
 }
 
@@ -57,16 +62,12 @@ function validate_credentials(
         }
     }
 
-    err_span.textContent = ""
     return true
 }
 
 // Verificar o tipo de dado presente em cada campo
 function check_fields_values(form) {
     let valid_values = true
-
-    // Acessar o <span> de mensagem de erro
-    const err_msg = document.getElementById("form-validation-msg")
 
     // Acessa os campos do formulário
     const name = form['name'].value

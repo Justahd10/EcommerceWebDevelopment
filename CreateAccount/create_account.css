@@ -18,6 +18,10 @@ button {
 
 
 /* Área para criação da conta - cabeçalho */
+#create-account-section {
+    height: 70%;
+}
+
 #create-account-header {
     display: flex; justify-content: center; margin-bottom: 25px;
 }
@@ -34,13 +38,12 @@ button {
 
 /* Área para criação da conta - Formulário */
 #create-account-content {
-    display: flex; flex-direction: column; gap: 30px;
-    height: 100%;
+    display: flex; flex-direction: column; height: 100%;
 }
 
 #form-title {
     display: flex; flex-direction: column;
-    padding-left: 170px; gap: 10px; margin-top: 20px; 
+    padding-left: 170px; gap: 10px; margin-top: 40px; 
     margin-bottom: 40px
 }
 
@@ -62,7 +65,7 @@ button {
 }
 
 #main-account-datas {
-    width: 50%; display: flex; flex-direction: column; gap: 10px
+    width: 50%; display: flex; flex-direction: column; gap: 20px
 }
 
 .form-label {
@@ -72,13 +75,14 @@ button {
 }
 
 .field-input {
-    border: 1px solid black; width: 250px; height: 30px;
+    border: 1px solid black; width: 100%; height: 30px;
     border-radius: 7px; font-size: 17px; padding-left: 10px;
 }
 
+/* Formulário - mensage de notificação de erro*/
 #form-validation-msg {
-    color: red; font-family: "Inter", sans-serif; font-size: 15px;
-    text-align: center;
+    color: red; font-family: "Inter", sans-serif;
+    text-align: center; font-size: 17px; position: relative
 }
 
 /* Aplicação da animação para cada um dos campos */
@@ -110,7 +114,7 @@ button {
 
 /* Formulário - Campo de senha */
 #password-field {
-    display: flex; gap: 10px;
+    width: 100%; display: flex; gap: 10px;
 }
 
 #alter-pass-visibility-btn {
@@ -133,10 +137,11 @@ button {
 
 /* Formulário - Botão para enviar informações */
 #submit-btn {
-    border: none; background-color: #0fbcd6;
-    width: 100px; height: 30px; border-radius: 20px;
+    border: none; color: white; background-color: #0fbcd6;
+    width: 50%; height: 35px; border-radius: 5px;
     font-family: "Inter", sans-serif; font-weight: 600;
 
+    box-shadow: 0px 5px 10px black;
     transition: scale 0.5s;
 }
 
@@ -146,6 +151,10 @@ button {
 
 
 /* Área para criação da conta - Login alternativo */
+#login-options-section {
+    height: 10%; display: flex; flex-direction: column; justify-content: center;
+}
+
 #login-divisor {
     display: flex; justify-content: center; align-items: center; gap: 40px;
 }
@@ -186,5 +195,6 @@ button {
 
 /* Mensagem de outra opção */
 #alredy-account-msg {
-    margin-top: 0px; text-align: center; font-family: "Inter", sans-serif
+    margin: 0px; height: 10%; padding-top: 10%; 
+    text-align: center; font-family: "Inter", sans-serif;
 }
