@@ -1,0 +1,17 @@
+{
+  "name": "mockapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mock-api": "nodemon --watch resources --ext json --exec \"python resource_build.py && npx json-server db.json\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15",
+    "nodemon": "^3.1.14"
+  }
+}
