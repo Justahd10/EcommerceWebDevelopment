@@ -8,11 +8,11 @@
 
 
 /* Variants */
-.primary {
+.primary-divisor-bar {
     border-radius: 50%;
 }
 @starting-style {
-    .primary {
+    .primary-divisor-bar {
         width: 200px;
     }
 }

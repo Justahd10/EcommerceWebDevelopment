@@ -2,10 +2,13 @@ import DivisorBar from "../components/header/divisor_bar";
 
 
 export default {
-    title: "Login/Header/divisor_bar",
+    title: "Login/Header/Divisor",
     component: DivisorBar,
     parameters: {
         layout: "centered"
+    },
+    args: {
+        text: "Ou entre com"
     }
 }
 

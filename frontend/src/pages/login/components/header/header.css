@@ -15,5 +15,5 @@
 }
 
 .logo {
-    height: clamp(100px, calc(80px + 6.25vw), 200px)
+    height: clamp(100px, calc(40px + 2.6vw), 200px)
 }

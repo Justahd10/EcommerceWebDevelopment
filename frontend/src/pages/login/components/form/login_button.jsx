@@ -8,7 +8,7 @@ function get_classes(is_primary) {
     const styles = ['login-submit-btn']
 
     if (is_primary) {
-        styles.push('primary')
+        styles.push('login-btn-primary')
 
         return styles 
     } else {

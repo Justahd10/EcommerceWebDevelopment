@@ -9,7 +9,7 @@ class DivisorBar extends Component {
         let bar_styles
 
         if (this.props.primary) {
-            bar_styles = ["divisor-bar", "primary"]
+            bar_styles = ["divisor-bar", "primary-divisor-bar"]
         } else {
             bar_styles = ["divisor-bar"]
         }
