@@ -1,0 +1,14 @@
+# Dependencies
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+frontend/build/
+
+# Test and coverage
+coverage/
+
+# Logs
+*.log
+*storybook.log
+storybook-static/

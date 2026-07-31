@@ -1,0 +1,18 @@
+/* Default */
+.divisor-bar {
+   background-color: rgb(89 211 230);
+   width: clamp(200px, calc(80px + 37.5vw), 800px); height: 2px;
+
+   transition: width 2s;
+}
+
+
+/* Variants */
+.primary {
+    border-radius: 50%;
+}
+@starting-style {
+    .primary {
+        width: 200px;
+    }
+}
