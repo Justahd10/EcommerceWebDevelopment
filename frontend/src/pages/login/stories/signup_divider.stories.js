@@ -3,7 +3,7 @@ import SignupDividerBar from "../components/extra_infor/signup_divider";
 
 
 export default {
-    title: "Login/ExtraInformations",
+    title: "Login/ExtraInformations/Divisors",
     component: SignupDividerBar,
     parameters: {
         layout: "centered"
@@ -13,4 +13,4 @@ export default {
     }
 }
 
-export const SignUpDivider = {}
+export const PrimarySignUpDivider = {}

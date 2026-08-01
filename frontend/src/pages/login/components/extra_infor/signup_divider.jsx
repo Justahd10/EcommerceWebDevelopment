@@ -7,13 +7,14 @@ import './signup_divider.css'
 
 class SignUpDividerBar extends Component {
     render() {
+
         return (
-            <div className = "">
-                <hr className = ""/>
-                <span className = "">
+            <div className = "login-divisor">
+                <hr className = "horizontal-row"/>
+                <span className = "bar-text">
                     {this.props.text}
                 </span>
-                <hr className = ""/>
+                <hr className = "horizontal-row"/>
             </div>
         )
     }
@@ -21,7 +22,8 @@ class SignUpDividerBar extends Component {
 
 
 SignUpDividerBar.PropTypes = {
-    text: PropTypes.string
+    text: PropTypes.string,
+    type: PropTypes.oneOf(['mobile', 'desktop'])
 }
 
 

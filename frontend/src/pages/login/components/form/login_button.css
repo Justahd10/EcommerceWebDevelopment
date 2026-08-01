@@ -1,17 +1,31 @@
 .login-submit-btn {
     font-family: calibri;
-    font-size: clamp(14px, calc(12px + 0.5vw), 20px);
-    border-radius: clamp(20px, calc(14px + 0.5vw), 30px);
-    width: clamp(100px, calc(90px + 3.5vw), 200px);
-    padding: clamp(5px, calc(6px + 0.3vw), 10px);
+    font-size: clamp(14px, calc(13.2px + 0.25vw), 18px);
+    height: clamp(25px, calc(23.6px + 0.438vw), 32px);
+    width: clamp(80px, calc(67.143px + 4.018vw), 170px);
+    padding: clamp(3px, calc(2.714px + 0.089vw), 5px);
+    border-radius: clamp(22px, calc(21.2px + 0.25vw), 26px);
 }
-
+/* Adicionar uma largura pardrão e maior para celular e tablet */
+/* Adicionar uma largura menor e escalável para laptops e desktops */
 
 .login-btn-primary {
     border: none; background-color: #54c9eb; font-weight: 600;
-    box-shadow: 0px 5px 0px #b9b9b9;
+    box-shadow: 0px 5px 10px #aaa8a8;
+
     transition: scale 0.5s;
 }
-.login-btn-primary:hover {
-    scale: 105%;
+
+@media (320px <= width <= 768px) {
+    .login-submit-btn {
+        width: clamp(230px, calc(215.714px + 4.464vw), 250px);
+        height: clamp(35px, calc(30px + 1.563vw), 42px);
+        font-size: 16px;
+    }
+}
+
+@media (width > 768px) {
+    .login-btn-primary:hover {
+        scale: 105%;
+    }
 }

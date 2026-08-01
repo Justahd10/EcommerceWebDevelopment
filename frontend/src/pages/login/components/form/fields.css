@@ -4,7 +4,71 @@
 
 
 /* Default */
+.fields-box {
+    display: flex; flex-direction: column; gap: 25px;
+    font-family: 'Inter', sans-serif;
+    /*gap: clamp(25px, calc(21.429px + 1.116vw), 50px)*/
+}
 
+.creds-fields {
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+.field {
+    display: flex; flex-direction: column; gap: 5px;
+    font-size: clamp(14px, calc(13.6px + 0.125vw), 16px);
+    font-weight: 600;
+}
+
+.pass-field {
+    display: flex; gap: 10px;
+}
+
+@media (320px <= width <= 768px) {
+    /* Body style just for tests */
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+    .input {
+        height: clamp(35px, calc(30px + 1.563vw), 42px); 
+        border: none; border-radius: 20px;
+        padding: 0px 0px 0px 14px;
+        background-color: #dadada;
+        box-shadow: 0px 5px 10px #aaa8a8;
+    }
+    .field {
+        width: clamp(230px, calc(215.714px + 4.464vw), 250px);
+    }
+}
+
+@media (width > 768px) {
+    .field {
+        width: clamp(200px, calc(180px + 6.25vw), 300px);
+    }
+
+    .input {
+        height: clamp(25px, calc(22.857px + 0.67vw), 40px);
+        border: 1px solid black; 
+        border-radius: clamp(4px, calc(3.2px + 0.25vw), 8px);
+        font-size: clamp(14px, calc(13.6px + 0.125vw), 16px);
+        padding: 0px 0px 0px 14px;
+    }
+    .input:hover {
+        background-color: rgb(242, 241, 241);
+    }
+}
+
+
+.checkbox-field {
+    display: flex; align-items: center; gap: 5px; justify-content: center;
+    font-weight: 400; font-size: clamp(14px, calc(13.8px + 0.063vw), 15px);
+    
+}
+
+.notification-field {
+    text-align: center; color: red; font-weight: 500;
+    font-size: clamp(12px, calc(11.6px + 0.125vw), 14px);
+}
 
 
 /* Variants */

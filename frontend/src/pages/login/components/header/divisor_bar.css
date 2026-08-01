@@ -11,8 +11,15 @@
 .primary-divisor-bar {
     border-radius: 50%;
 }
+
 @starting-style {
     .primary-divisor-bar {
         width: 200px;
+    }
+}
+
+@media (320px <= width <= 768px) {
+    .divisor-bar {
+        display: none
     }
 }

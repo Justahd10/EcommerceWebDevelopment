@@ -1,4 +1,12 @@
 /* Default */
+.alt-pass-btn {
+    background: transparent; border: none;
+    display: flex; align-items: center;
+}
 
+.alt-pass-btn-icon {
+    fill: black;
+    height: 27px; width: 27px;
+}
 
 /* Variants */

@@ -6,7 +6,8 @@ import SignUpDividerBar from './signup_divider'
 import SocialLoginButton from './social_login_button'
 
 /* Buttons images */
-
+import googleImg from '../../assets/google_icon.png'
+import facebookImg from '../../assets/facebook_icon.png'
 
 import './login_footer.css'
 
@@ -14,8 +15,12 @@ import './login_footer.css'
 
 const social_logins = [
     {
-        "icon": "",
-        "text": "Entrar com o Google"
+        "icon": googleImg,
+        "text": "Google"
+    },
+    {
+        "icon": facebookImg,
+        "text": "Facebook"
     }
 ]
 
@@ -26,7 +31,7 @@ function setSocialLogins() {
         buttons.push(
             <SocialLoginButton
             icon_url = {item['icon']}
-            name = {item['text']}/>
+            text = {item['text']}/>
         )
     }
 
@@ -37,12 +42,14 @@ class LoginFooter extends Component {
     render() {
         
         return (
-            <div className = "">
-                <p className = "">
-                    Não é cadastrado? <a href = "#">Clique aqui</a>
+            <div className = "login-footer">
+                <p className = "signup-link">
+                   <a href = "#">
+                    {this.props.text}
+                   </a>
                 </p>
                 <SignUpDividerBar text = "Ou entre de outra forma"/>
-                <div className = "">
+                <div className = "social-login-btns">
                     {setSocialLogins()}
                 </div>
             </div>
@@ -51,7 +58,9 @@ class LoginFooter extends Component {
 }
 
 
-LoginFooter.PropTypes = {}
+LoginFooter.PropTypes = {
+    text: PropTypes.string
+}
 
 
 export default LoginFooter

@@ -8,9 +8,11 @@ import './social_login_button.css'
 class SocialLoginButton extends Component {
     render() {
         return (
-            <button className = "" type = "button">
-                <img className = "" src = {this.props.icon_url}/>
-                {this.props.text}
+            <button className = "social-login-button" type = "button">
+                <img className = "social-login-icon" src = {this.props.icon_url}/>
+                <span className = "button-text">
+                    {this.props.text}
+                </span>
             </button>
         )
     }
