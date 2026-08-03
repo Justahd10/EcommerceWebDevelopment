@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 /* Child elements for the component */
@@ -8,52 +8,76 @@ import './fields.css'
 
 
 
-class LoginFields extends Component {
-    render() {
+function LoginFields({
+    email_label, pass_label,
+    email_placeholder, pass_placeholder,
+    checkbox_msg, msg,
+    pass_btn_mode, input_func
+}) {
+    // Alter pass visibility funcitonality
+    const [show_pass, setPassVisibility] = useState(false)
+    
+    function tooglePassVisibility() {
+        if (!show_pass) {
+            setPassVisibility(true)
+        } else {
+            setPassVisibility(false)
+        }
+    }
 
-        return (
-            <div className = "fields-box">
-                <div className = "creds-fields">
-                    <label className = "field">
-                        {this.props.email_label}
-                        <input className = "input" name = "usr_name" type = "email"
-                        placeholder = {this.props.email_placeholder}/>
-                    </label>
+    const pass_state = show_pass ? 
+    ["text", "hidde"] : ["password", "show"]
 
-                    <label className = "field">
-                        {this.props.pass_label}
-                        <div className = "pass-field">
-                            <input className = "input" name = "usr_pass" type = "password"
-                            placeholder = {this.props.pass_placeholder}/>
-                            <PassVisibiltyButton mode = {this.props.pass_btn_mode}/>
-                        </div>
-                    </label>
-                </div>
-
-                <label className = "">
-                    <div className = "checkbox-field">
-                        <input name = "remember_me" type = "checkbox"/>
-                        {this.props.checkbox_msg}
-                    </div>
+    return (
+        <div className="fields-box">
+            <div className="creds-fields">
+                <label className="field">
+                    {email_label}
+                    <input onChange = {input_func}
+                        className="input"
+                        name="usr_email"
+                        type="email"
+                        placeholder={email_placeholder}
+                    />
                 </label>
 
-                <span className = "notification-field">
-                    {this.props.err_msg}
-                </span>
+                <label className="field">
+                    {pass_label}
+                    <div className="pass-field">
+                        <input onChange = {input_func} 
+                            className="input"
+                            name="usr_pass"
+                            type={pass_state[0]}
+                            placeholder={pass_placeholder}
+                        />
+                        <PassVisibiltyButton 
+                        click_func = {tooglePassVisibility}
+                        mode = {pass_state[1]}/>
+                    </div>
+                </label>
             </div>
-        )
-    }
+
+            <label className="">
+                <div className="checkbox-field">
+                    <input name="remember_me" type="checkbox" />
+                    {checkbox_msg}
+                </div>
+            </label>
+
+            <span className="notification-field">
+                {msg}
+            </span>
+        </div>
+    )
 }
 
-
-LoginFields.PropTypes = {
+LoginFields.propTypes = {
     email_label: PropTypes.string,
     pass_label: PropTypes.string,
     email_placeholder: PropTypes.string,
     pass_placeholder: PropTypes.string,
     checkbox_msg: PropTypes.string,
-    err_msg: PropTypes.string,
-    pass_btn_mode: PropTypes.oneOf(['show', 'hidde'])
+    msg: PropTypes.string
 }
 
 

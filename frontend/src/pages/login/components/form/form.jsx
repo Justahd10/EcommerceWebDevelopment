@@ -1,5 +1,9 @@
-import {Component} from 'react'
+import {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
+
+/* Access scripts for component functionalitys */
+import {getUser, checkEmail, checkPassord
+} from './form_validation.js'
 
 /* Child elements of the component */
 import LoginFields from './fields'
@@ -9,24 +13,54 @@ import './form.css'
 
 
 
-class LoginForm extends Component {
-    render() {
-        return (
-            <form className = "login-form" name = "LoginForm">
-                <LoginFields email_label = "Email" pass_label = "Senha"
-                checkbox_msg = "Mantenha-me conectado"
-                err_msg = {this.props.err_msg}
-                pass_btn_mode = {this.props.pass_btn_mode}/>
-                <LoginButton primary/>
-            </form>
-        )
+// Component
+function LoginForm({ pass_btn_mode }) {
+    // State variables to credetials management
+    const [usr_email, setEmail] = useState("")
+    const [usr_pass, setPass] = useState("")
+    const [err_msg, setErrMsg] = useState("")
+
+    // Lifting State Up function of the component
+    function handleInputValue(event) {
+        const target = event.target
+
+        switch (target.name) {
+            case "usr_email": setEmail(target.value); break
+            case "usr_pass": setPass(target.value); break 
+        }
     }
+
+    // Validate submited login credentials
+    function validateForm() {
+        event.preventDefault()
+
+        if (
+            checkEmail(usr_email, setErrMsg) &&
+            checkPassord(usr_pass, setErrMsg) &&
+            getUser(usr_email, usr_pass, setErrMsg)
+        ) {
+            setErrMsg("")
+        }
+    }
+
+    return (
+        <form className="login-form" name="LoginForm"
+        onSubmit = {validateForm}>
+            <LoginFields
+                email_label="Email"
+                pass_label="Senha"
+                checkbox_msg="Mantenha-me conectado"
+                msg={err_msg}
+                pass_btn_mode={pass_btn_mode}
+                input_func = {handleInputValue}
+            />
+            <LoginButton primary />
+        </form>
+    )
 }
 
-LoginForm.PropTypes = {
-    err_msg: PropTypes.string,
-    pass_btn_mode: PropTypes.oneOf(['show', 'hidde'])
-}
+
+LoginForm.propTypes = {}
 
 
 export default LoginForm

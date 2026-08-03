@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "mock-api": "nodemon --watch resources --ext json --exec \"python resource_build.py && npx json-server db.json\""
+    "mock-api": "nodemon --watch resources --ext json --exec \"py resourcers_build.py && npx json-server db.json\""
   },
   "keywords": [],
   "author": "",

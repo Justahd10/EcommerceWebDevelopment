@@ -1,10 +1,10 @@
-import {Component} from 'react'
 import PropTypes from 'prop-types'
 
 import TitleSubtitle from './title_subtitle'
 import DivisorBar from './divisor_bar'
 
 import './header.css'
+
 
 
 const login_header_models = {
@@ -25,25 +25,21 @@ function get_header_elements(primary) {
     return login_header_models[header_type]
 }
 
-class LoginHeader extends Component {
-    render() {
-        const elements = get_header_elements(this.props.primary)
+function LoginHeader({ primary, logo_img }) {
+    const elements = get_header_elements(primary)
 
-        return (
-            <header className = "login-header">
-                <div className = "shop-indety">
-                    <img className = "logo" src = {this.props.logo_img}
-                    alt = "Logo da Online Shop"/>
-                    {elements.title}
-                </div>
-                {elements.bar}
-            </header>
-        )
-    }
+    return (
+        <header className="login-header">
+            <div className="shop-indety">
+                <img className="logo" src={logo_img} alt="Logo da Online Shop" />
+                {elements.title}
+            </div>
+            {elements.bar}
+        </header>
+    )
 }
 
-
-LoginHeader.PropTypes = {
+LoginHeader.propTypes = {
     primary: PropTypes.bool,
     logo_img: PropTypes.string
 }

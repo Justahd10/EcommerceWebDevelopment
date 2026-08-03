@@ -7,10 +7,6 @@ export default {
     component: LoginForm,
     parameters: {
         layout: "centered"
-    },
-    args: {
-        err_msg: "",
-        pass_btn_mode: "show"
     }
 }
 

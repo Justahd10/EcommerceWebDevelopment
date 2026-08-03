@@ -14,4 +14,4 @@ export default {
 }
 
 
-export const AlternatePassButton = {}
+export const PrimaryPassButton = {}

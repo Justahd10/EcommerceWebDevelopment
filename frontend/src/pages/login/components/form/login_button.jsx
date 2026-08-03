@@ -1,4 +1,3 @@
-import {Component} from 'react'
 import PropTypes from 'prop-types'
 
 import './login_button.css'
@@ -16,20 +15,16 @@ function get_classes(is_primary) {
     }
 }
 
-class LoginButton extends Component {
-    render() {
-        return (
-            <button className = {
-                get_classes(this.props.primary).join(' ')
-            } type = "submit">
-                LOGIN
-            </button>
-        )
-    }
+function LoginButton({ primary }) {
+    return (
+        <button className={get_classes(primary).join(' ')} type="submit">
+            LOGIN
+        </button>
+    )
 }
 
 
-LoginButton.PropTypes = {
+LoginButton.propTypes = {
     primary: PropTypes.bool
 }
 

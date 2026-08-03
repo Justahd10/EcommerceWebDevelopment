@@ -1,27 +1,17 @@
-import {Component} from 'react'
 import PropTypes from 'prop-types'
 
 import './divisor_bar.css'
 
 
-class DivisorBar extends Component {
-    render() {
-        let bar_styles
+function DivisorBar({ primary }) {
+    const bar_styles = primary
+        ? ['divisor-bar', 'primary-divisor-bar']
+        : ['divisor-bar']
 
-        if (this.props.primary) {
-            bar_styles = ["divisor-bar", "primary-divisor-bar"]
-        } else {
-            bar_styles = ["divisor-bar"]
-        }
-
-        return (
-            <hr className = {bar_styles.join(' ')}></hr>
-        )
-    }
+    return <hr className={bar_styles.join(' ')} />
 }
 
-
-DivisorBar.PropTypes = {
+DivisorBar.propTypes = {
     primary: PropTypes.bool
 }
 
