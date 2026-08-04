@@ -34,7 +34,7 @@ for file in Path("resources").iterdir():
 
 # Load all resources into db.json
 with open(
-    resources_path + "/db.json",
+    resources_path + "/conf/db.json",
     "w", encoding = "utf-8"
 ) as db_file:
     json.dump(api_resources, db_file, indent = 4)
