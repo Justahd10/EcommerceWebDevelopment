@@ -2,16 +2,18 @@
   "name": "mockapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "sv.js",
   "scripts": {
-    "mock-api": "nodemon --watch resources --ext json --exec \"py conf/resourcers_build.py && npx json-server conf/db.json\""
+    "mock-api": "nodemon --watch resources --ext json --exec \"py conf/resourcers_build.py && node sv.js\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "json-server": "^1.0.0-beta.15",
     "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4"
   }
 }
