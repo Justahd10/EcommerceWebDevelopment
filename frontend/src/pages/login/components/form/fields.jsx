@@ -59,7 +59,8 @@ function LoginFields({
 
             <label className="">
                 <div className="checkbox-field">
-                    <input name="remember_me" type="checkbox" />
+                    <input onChange = {input_func} 
+                    name="remember_me" type="checkbox" />
                     {checkbox_msg}
                 </div>
             </label>

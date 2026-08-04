@@ -4,28 +4,24 @@
 
 /* Defaults */
 .social-login-button {
-    font-family: "Poppins", sans-serif;
+    font-family: "Inter", sans-serif;
+    padding: 0px 0px 0px 0px;
+    border: none;
+    background-color: transparent;
+    display: flex; flex-direction: column; gap: 5px; align-items: center;
 }
 
-@media (320px <= width <= 768px) {
-    .social-login-icon {
-        height: 25px;
-        width: 25px;
-    }
-
-    .social-login-button {
-        padding: 0px 0px 0px 0px;
-        border: none;
-        background-color: transparent;
-        display: flex; flex-direction: column; gap: 5px; align-items: center;
-    }
-
-    .button-text {
-        display: none;
-    }
+.social-login-icon {
+    height: 25px;
+    width: 25px;
 }
 
-@media (width > 768px) {
+.button-text {
+    display: none;
+}
+
+/* Default - Desktop viewport */
+@media (min-width: 769px) {
     .social-login-icon {
         height: 25px;
         width: 25px;
@@ -34,13 +30,14 @@
     .social-login-button {
         padding: 5px 0px 5px 0px;
         border: none; border-radius: 10px;
-        width: clamp(200px, calc(194px + 1.875vw), 230px);
+        width: clamp(12.500rem, calc(10.351rem + 4.471vw), 14.375rem);
         height: 40px;
         background-color: white;
-        display: flex; align-items: center; justify-content: space-between;
+        display: flex; align-items: center; 
+        flex-direction: row; justify-content: space-between;
         box-shadow: 0px 2px 5px hsl(0, 2%, 60%);
 
-        transition: scale 1s;
+        transition: scale 0.5s;
     }
     .social-login-button:hover {
         scale: 105%;
@@ -52,7 +49,7 @@
     }
 
     .button-text {
-        font-size: 14px; width: 100%;
+        display: inline; font-size: 14px; width: 100%;
     }
 }
 

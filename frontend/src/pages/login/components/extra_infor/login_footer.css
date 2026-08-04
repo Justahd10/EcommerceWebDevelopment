@@ -6,22 +6,21 @@
 /* Default */
 .login-footer {
     display: flex; flex-direction: column; align-items: center;
-    gap: clamp(10px, calc(7.143px + 0.893vw), 20px);
+    gap: clamp(0.625rem, calc(0.446rem + 0.893vw), 1.250rem);
 }
 
 .signup-link {
     font-family: "Inter", sans-serif; font-size: clamp(14px, calc(13.429px + 0.179vw), 16px);
 }
 
-
-@media (320px <= width <= 768px) {
-    .social-login-btns {
-        display: flex; gap: clamp(20px, calc(16.429px + 1.116vw), 25px)
-    }
+.social-login-btns {
+    display: flex; gap: clamp(1.250rem, calc(1.161rem + 0.446vw), 1.563rem)
 }
-@media (width > 768px) {
+
+/* Default - Desktop viewport */
+@media (min-width: 769px) {
     .social-login-btns {
-        display: flex; gap: 10px
+        display: flex; gap: 1rem
     }
 }
 

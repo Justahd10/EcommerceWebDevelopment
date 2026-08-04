@@ -1,7 +1,9 @@
 /* Default */
 .divisor-bar {
    background-color: rgb(89 211 230);
-   width: clamp(200px, calc(80px + 37.5vw), 800px); height: 2px;
+   width: clamp(12.500rem, calc(1.786rem + 53.571vw), 50.000rem); 
+   height: 2px;
+   display: none;
 
    transition: width 2s;
 }
@@ -18,8 +20,9 @@
     }
 }
 
-@media (320px <= width <= 768px) {
+/* Default - Desktop viewport */
+@media (min-width: 769px) {
     .divisor-bar {
-        display: none
+        display: block;
     }
 }

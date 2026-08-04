@@ -18,6 +18,8 @@ function LoginForm({ pass_btn_mode }) {
     // State variables to credetials management
     const [usr_email, setEmail] = useState("")
     const [usr_pass, setPass] = useState("")
+    const [remember_email, setRememberUsr] = useState(false)
+
     const [err_msg, setErrMsg] = useState("")
 
     // Lifting State Up function of the component
@@ -26,19 +28,21 @@ function LoginForm({ pass_btn_mode }) {
 
         switch (target.name) {
             case "usr_email": setEmail(target.value); break
-            case "usr_pass": setPass(target.value); break 
+            case "usr_pass": setPass(target.value); break
+            case "remember_me": setRememberUsr(target.checked); break
         }
     }
 
     // Validate submited login credentials
     function validateForm() {
         event.preventDefault()
-
+        
         if (
             checkEmail(usr_email, setErrMsg) &&
             checkPassord(usr_pass, setErrMsg) &&
             getUser(usr_email, usr_pass, setErrMsg)
         ) {
+            // Reset error message
             setErrMsg("")
         }
     }

@@ -19,12 +19,12 @@
 /* Title */
 .header-title {
   font-family: "Poppins", sans-serif; font-weight: 700; font-style: normal;
-  font-size: clamp(16px, calc(15px + 0.75vw), 32px);
+  font-size: clamp(1.000rem, calc(0.929rem + 0.357vw), 1.250rem);
   margin: 0px;
 }
 /* Subtitle */
 .header-subtitle {
     font-family: calibri; font-style: italic; 
-    font-size: clamp(12px, calc(11.5px + 0.35vw), 25px);
+    font-size: clamp(0.750rem, calc(0.607rem + 0.714vw), 1.250rem);
     margin: 0px;
 }

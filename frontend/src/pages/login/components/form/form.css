@@ -1,15 +1,11 @@
 /* Default */
 .login-form {
     display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+    height: clamp(15.625rem, calc(13.393rem + 11.161vw), 18.750rem);
 }
 
-@media (width <= 768px) {
-    .login-form {
-        height: clamp(250px, calc(214.286px + 11.161vw), 300px);
-    }
-}
-
-@media (width > 768px) {
+/* Default - Desktop viewport */
+@media (min-width: 769px) {
     .login-form {
         height: 330px; box-shadow: 0px 5px 15px #cfcfcf;;
         padding: 20px; border-radius: 10px;
