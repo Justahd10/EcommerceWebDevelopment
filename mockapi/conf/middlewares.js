@@ -1,6 +1,9 @@
-function myMiddleware(req, res, next){
-    res.header("X-Hello", "World")
-    next()
+function generateToken(id, email, create_at, expires){
+    let tk = `${id} ${email} `
+    tk = 
+    tk + `${create_at.toISOString()} ${expires.toISOString()}`
+
+    return tk
 }
 
-module.exports = myMiddleware
+// new Date() > expires
