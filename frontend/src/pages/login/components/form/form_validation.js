@@ -7,25 +7,18 @@ const pass_r = /^.{8,}$/
 const empty_fields_msg = "Preencha todos os campos"
 
 
-// Functions to validate values of the login form
+/* 
+        Functions to validate values of the login form
+*/
 export async function submitUserCreds(email, pass, setErr) {
-    const url =
-    `http://localhost:3000/users?email=${email}`
+    // Build request body
 
-    const response = await fetch(url)
-    const datas = await response.json()
 
-    if (
-        datas.length == 1 &&
-        datas[0]['email'] === email &&
-        datas[0]['senha'] === pass
-    ) {
-        setErr("")
-        return true
-    }
-    
-    setErr("Conta não encontrada")
-    return false
+    // Make request
+
+
+    // Handle result
+
 }
 
 export function checkEmail(email, setErr) {
@@ -51,3 +44,9 @@ export function checkPassord(pass, setErr) {
 
     return true
 }
+
+
+/* 
+        Functions to manage cookies for autentication
+*/
+function createAuthCookie(name, token){}

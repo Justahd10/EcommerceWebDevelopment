@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 /* Access scripts for component functionalitys */
@@ -33,7 +33,6 @@ function LoginForm({ pass_btn_mode }) {
         }
     }
 
-    // Validate submited login credentials
     function validateForm() {
         event.preventDefault()
         
@@ -59,8 +58,7 @@ function LoginForm({ pass_btn_mode }) {
                 checkbox_msg="Mantenha-me conectado"
                 msg={err_msg}
                 pass_btn_mode={pass_btn_mode}
-                input_func = {handleInputValue}
-            />
+                input_func = {handleInputValue}/>
             <LoginButton primary />
         </form>
     )

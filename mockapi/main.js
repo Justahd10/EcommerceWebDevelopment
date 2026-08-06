@@ -1,6 +1,7 @@
-const ServerPipeline = require("./conf/sv.js")
+const json_server = require('json-server')
+const {ServerPipeline, cleanExpiredRefreshTokens} = require("./conf/sv.js")
 
-const sv = ServerPipeline()
+const sv = ServerPipeline(json_server) // Server build
 
 
 function Main(){
@@ -9,4 +10,6 @@ function Main(){
     })
 }
 
-Main()
+Main() // Start the server
+
+cleanExpiredRefreshTokens(json_server) // Token register verification process
