@@ -4,7 +4,7 @@
   "description": "",
   "main": "sv.js",
   "scripts": {
-    "mock-api": "nodemon --watch resources --ext json --exec \"py conf/resourcers_build.py && node sv.js\""
+    "mock-api": "nodemon --watch resources --ext json --exec \"py conf/resourcers_build.py && node main.js\""
   },
   "keywords": [],
   "author": "",

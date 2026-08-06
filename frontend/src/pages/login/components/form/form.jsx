@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
 /* Access scripts for component functionalitys */
-import {getUser, checkEmail, checkPassord
+import {submitUserCreds, checkEmail, checkPassord
 } from './form_validation.js'
 
 /* Child elements of the component */
@@ -37,13 +37,16 @@ function LoginForm({ pass_btn_mode }) {
     function validateForm() {
         event.preventDefault()
         
+        // Primary datas format validation
         if (
             checkEmail(usr_email, setErrMsg) &&
-            checkPassord(usr_pass, setErrMsg) &&
-            getUser(usr_email, usr_pass, setErrMsg)
+            checkPassord(usr_pass, setErrMsg)
         ) {
-            // Reset error message
-            setErrMsg("")
+            // Verify in backend
+            const valid_login = submitUserCreds()
+
+        } else {
+            
         }
     }
 

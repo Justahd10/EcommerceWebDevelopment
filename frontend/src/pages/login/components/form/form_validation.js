@@ -8,7 +8,7 @@ const empty_fields_msg = "Preencha todos os campos"
 
 
 // Functions to validate values of the login form
-export async function getUser(email, pass, setErr) {
+export async function submitUserCreds(email, pass, setErr) {
     const url =
     `http://localhost:3000/users?email=${email}`
 

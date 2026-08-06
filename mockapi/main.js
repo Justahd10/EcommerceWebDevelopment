@@ -1,10 +1,12 @@
 const ServerPipeline = require("./conf/sv.js")
 
-const app = ServerPipeline()
+const sv = ServerPipeline()
 
 
 function Main(){
-    app.listen(3000, () => {
+    sv.listen(3000, () => {
         console.log("JSON server is running...")
     })
 }
+
+Main()

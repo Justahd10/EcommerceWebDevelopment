@@ -2,35 +2,34 @@ const path = require('path')
 const json_server = require('json-server')
 
 // Authentication routes
-const setAuthRoutes = require('../routes/auth.js')
+const setAuthRoutes = require('../routes/auth/auth.js')
+
+
 
 function ServerPipeline() {
-    // Server instance
-    const server = json_server.create()
+    // Create server instance
+    const sv = json_server.create()
 
-    // Defaults middlewares
-    server.use(json_server.defaults())
-
-    // Enable body parser
-    server.use(json_server.bodyParser)
-
-    
     // Create resources
     const resources_f  = path.join(
-        __dirname, "conf", "db.json"
+        __dirname, "db.json"
     )
     const resources = json_server.router(resources_f)
 
+    // Set Defaults middlewares
+    sv.use(json_server.defaults())
+    
+    // Set Enable body parser BEFORE routes
+    sv.use(json_server.bodyParser)
 
-    return server
+    // Set routes
+    setAuthRoutes(sv, resources)
+
+    // Set resources
+    sv.use(resources)
+    
+    return sv
 }
 
 
-
 module.exports = ServerPipeline
-server.use(resources)
-
-
-server.listen(3000, () => {
-    console.log("JSON Server is running...")
-})
