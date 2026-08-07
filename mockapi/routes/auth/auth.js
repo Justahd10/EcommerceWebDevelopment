@@ -6,27 +6,52 @@ const {
 
 
 function setAuthRoutes(server, resources) {
-    server.post("/api/login",
+    server.post("/api/auth/login",
         searchUser(resources), createUserAuth(resources), (
         req, res, next
     ) => {
+        
+        let tks = ["access_token", "refresh_token"]
+        if (!req.body.remember_me) {
+            tks = tks.slice(0, 1)
+        }
 
+        // Response header
+        for (const item of tks) {
+            res.cookie(
+                item, req.locals[item].token,
+                {
+                    "expires": req.locals[item].expires,
+                    "httpOnly": true
+                }
+            )
+        }
+
+        // Response body
         res.status(200).json(
             {
                 "status": "success",
                 "email": req.locals.email,
-                "auth_token": req.locals.auth_tk,
-                "refresh_token": req.locals.refresh_tk,
                 "timestamp": new Date(Date.now()).toISOString()
             }
         )
     })
 
-    server.post("/api/refresh", 
+    server.post("/api/auth/refresh", 
         validateRefreshToken(resources), (
         req, res, next
     ) => {
         
+        // Response header
+        res.cookie(
+            "access_token", req.locals.access_token.token,
+            {
+                "expires": req.locals.access_token.expires,
+                "httpOnly": true
+            }
+        )
+
+        // Resposne body
         res.status(200).json(
             {
                 "status": "success",

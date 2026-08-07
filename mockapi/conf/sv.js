@@ -1,6 +1,8 @@
 const path = require('path')
+const cookieParser = require('cookie-parser')
 
 const setAuthRoutes = require('../routes/auth/auth.js')
+const {checkToken} = require('../routes/auth/services/helpers.js')
 
 
 /*
@@ -18,7 +20,8 @@ function ServerPipeline(json_server) {
     sv.use(json_server.defaults())
     
     sv.use(json_server.bodyParser)
-
+    sv.use(cookieParser())
+ 
     setAuthRoutes(sv, resources)
 
     sv.use(resources)
@@ -36,7 +39,6 @@ function cleanExpiredRefreshTokens(json_server) {
             const valid_tk = checkToken(item.token)
 
             if (!valid_tk){
-                deleted_tokens.push(item.token)
                 resources.db.get("refresh_tokens")
                 .remove({"token": item.token})
                 .write()

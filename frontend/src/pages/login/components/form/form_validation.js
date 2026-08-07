@@ -10,15 +10,33 @@ const empty_fields_msg = "Preencha todos os campos"
 /* 
         Functions to validate values of the login form
 */
-export async function submitUserCreds(email, pass, setErr) {
+export async function getAuth(email, pass, remember_me, setErr) {
     // Build request body
-
+    const req_body = JSON.stringify({
+        "email": email,
+        "password": pass,
+        "remember_me": remember_me
+    })
 
     // Make request
+    const response = await fetch(
+        "http://localhost:3000/api/auth/login",
+        {
+            "method": "POST",
+            "body": req_body,
+            "headers": {
+                "Content-type": "application/json",
+            },
+            "credentials": "include"
+        }
+    )
 
-
+    const datas = await response.json()
+    const status = await response.status
+    
     // Handle result
-
+    if (status === 200) {setErr("")} 
+    else {setErr("Conta não encontrada")}
 }
 
 export function checkEmail(email, setErr) {
@@ -44,9 +62,3 @@ export function checkPassord(pass, setErr) {
 
     return true
 }
-
-
-/* 
-        Functions to manage cookies for autentication
-*/
-function createAuthCookie(name, token){}

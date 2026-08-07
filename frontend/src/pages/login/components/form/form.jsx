@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 /* Access scripts for component functionalitys */
-import {submitUserCreds, checkEmail, checkPassord
+import {getAuth, checkEmail, checkPassord
 } from './form_validation.js'
 
 /* Child elements of the component */
@@ -16,9 +16,9 @@ import './form.css'
 // Component
 function LoginForm({ pass_btn_mode }) {
     // State variables to credetials management
-    const [usr_email, setEmail] = useState("")
-    const [usr_pass, setPass] = useState("")
-    const [remember_email, setRememberUsr] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPass] = useState("")
+    const [remember_me, setRememberUsr] = useState(false)
 
     const [err_msg, setErrMsg] = useState("")
 
@@ -35,14 +35,16 @@ function LoginForm({ pass_btn_mode }) {
 
     function validateForm() {
         event.preventDefault()
-        
+
         // Primary datas format validation
         if (
-            checkEmail(usr_email, setErrMsg) &&
-            checkPassord(usr_pass, setErrMsg)
+            checkEmail(email, setErrMsg) &&
+            checkPassord(password, setErrMsg)
         ) {
             // Verify in backend
-            const valid_login = submitUserCreds()
+            const valid_login = getAuth(
+                email, password, remember_me, setErrMsg
+            )
 
         } else {
             

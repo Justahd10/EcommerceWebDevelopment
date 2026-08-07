@@ -1,20 +1,17 @@
-const {generateToken, checkToken} = require('./helpers.js')
+const {createAuth, checkToken} = require('./helpers.js')
 
 
 // "/api/login"
 function searchUser(resource) {
     return (req, res, next) => {
-        req.locals =  {}
+        req.locals = req.locals ??  {}
 
-        // Acces users resources
         const email = req.body.email
         const pass = req.body.password
 
-        // Save informations next middlewares
         req.locals.email = email
         req.locals.pass = pass
 
-        // Search by email and password
         const users = resource.db.get("users")
         const user = users.find(
             {
@@ -28,7 +25,12 @@ function searchUser(resource) {
             next()
         } 
         else {
-            return res.sendStatus(401)
+            return res.status(401).json(
+                {
+                    "status": "unsuccessful",
+                    "error": "Account not found"
+                }
+            )
         }
     }
 }
@@ -36,32 +38,29 @@ function searchUser(resource) {
 function createUserAuth(resource) {
     return (req, res, next) => {
 
-    req.locals.auth_tk = generateToken(
-        type = "auth",
-        id = req.locals.usr_id,
-        email = req.locals.email
-    )
+    const tks = ["access_token"]
+    if (req.body.remember_me) {tks.push("refresh_token")}
 
-    req.locals.refresh_tk = null
-    if (req.body.remember_me) {
-        const refresh_tk = 
-        generateToken(
-            "refresh", req.locals.usr_id, 
+    for (const tk of tks){
+        const creds = createAuth(
+            tk,
+            req.locals.usr_id,
             req.locals.email
         )
 
-        const refresh_tokens =
-        resource.db.get("refresh_tokens")
-        .push(
-            {
-                "user_id": req.locals.usr_id,
-                "token": refresh_tk.token,
-                "create_at": refresh_tk.create_at,
-                "expires": refresh_tk.expires
-            }
-        ).write()
-        
-        req.locals.refresh_tk = refresh_tk.token
+        if (tk === "refresh_token") {
+            resource.db.get("refresh_tokens")
+            .push(
+                {
+                    "user_id": req.locals.usr_id,
+                    "token": creds.token,
+                    "create_at": creds.create_at,
+                    "expires": creds.expires
+                }
+            ).write()
+        }
+
+        req.locals[tk] = creds
     }
 
     next()
@@ -70,13 +69,12 @@ function createUserAuth(resource) {
 // "/api/refresh"
 function validateRefreshToken(resource) {
     return (req, res, next) => {
-    req.locals = {}
+    req.locals = req.locals ?? {}
+    
+    const refresh_tk = req.cookies.refresh_token
 
-    const refresh_tk = req.header("refresh_token")
-
-    const refresh_tks = resource.db.get("refresh_tokens")
-    const register = refresh_tks.find(
-        {"token": auth_tk}).value()
+    const register = resource.db.get("refresh_tokens")
+    .find({"token": refresh_tk}).value()
 
     if (
         refresh_tk && checkToken(refresh_tk) && register
@@ -84,9 +82,11 @@ function validateRefreshToken(resource) {
         const user = resource.db.get("users")
         .find({"id": register.user_id}).value()
 
-        req.locals.auth_tk = generateToken(
-            "auth", user.id, user.email
+        const creds = generateToken(
+            "access_token", user.id, user.email
         )
+
+        req.locals.access_token = creds
 
         next()
     } else {
@@ -95,9 +95,8 @@ function validateRefreshToken(resource) {
 }}
 
 // "/api/logout"
-// the authToken is deleted by frontend (Cookies not HTTPOnly) 
 const clearSession = (req, res, next, resource) => {
-    const refresh_tk = req.header("Cookie")
+    const refresh_tk = req.header("refresh_token")
 
     if (refresh_tk) {
         resource.db.get("refresh_tokens")

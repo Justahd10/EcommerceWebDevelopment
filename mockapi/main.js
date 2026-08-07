@@ -3,7 +3,6 @@ const {ServerPipeline, cleanExpiredRefreshTokens} = require("./conf/sv.js")
 
 const sv = ServerPipeline(json_server) // Server build
 
-
 function Main(){
     sv.listen(3000, () => {
         console.log("JSON server is running...")
