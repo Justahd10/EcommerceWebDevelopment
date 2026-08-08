@@ -67,7 +67,7 @@ function createUserAuth(resource) {
 }}
 
 // "/api/refresh"
-function validateRefreshToken(resource) {
+function refreshToken(resource) {
     return (req, res, next) => {
     req.locals = req.locals ?? {}
     
@@ -106,8 +106,28 @@ const clearSession = (req, res, next, resource) => {
     }
 }
 
+// Used by all protected endpoints
+function verifyAccessToken(req, res, next){
+    req.locals = req.locals ?? {}
+
+    const access_tk = req.cookies.access_token
+
+    if (access_tk && checkToken(access_tk)){
+        req.locals.usr_id = access_tk.split(" ")[1]
+        next()
+
+    } else {
+        res.status(401).json(
+            {
+                "status": "unsuccessful",
+                "error": "Invalid access token"
+            }
+        )
+    }
+}
 
 module.exports = {
     searchUser, createUserAuth,
-    validateRefreshToken, clearSession
+    refreshToken, clearSession,
+    verifyAccessToken
 }

@@ -11,14 +11,12 @@ const empty_fields_msg = "Preencha todos os campos"
         Functions to validate values of the login form
 */
 export async function getAuth(email, pass, remember_me, setErr) {
-    // Build request body
     const req_body = JSON.stringify({
         "email": email,
         "password": pass,
         "remember_me": remember_me
     })
 
-    // Make request
     const response = await fetch(
         "http://localhost:3000/api/auth/login",
         {
@@ -34,9 +32,14 @@ export async function getAuth(email, pass, remember_me, setErr) {
     const datas = await response.json()
     const status = await response.status
     
-    // Handle result
-    if (status === 200) {setErr("")} 
-    else {setErr("Conta não encontrada")}
+    if (status === 200) {
+        setErr("")
+        return true
+    } 
+    else {
+        setErr("Conta não encontrada")
+        return false
+    }
 }
 
 export function checkEmail(email, setErr) {

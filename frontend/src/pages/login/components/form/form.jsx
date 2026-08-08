@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 /* Access scripts for component functionalitys */
@@ -13,7 +13,6 @@ import './form.css'
 
 
 
-// Component
 function LoginForm({ pass_btn_mode }) {
     // State variables to credetials management
     const [email, setEmail] = useState("")
@@ -27,27 +26,29 @@ function LoginForm({ pass_btn_mode }) {
         const target = event.target
 
         switch (target.name) {
-            case "usr_email": setEmail(target.value); break
-            case "usr_pass": setPass(target.value); break
-            case "remember_me": setRememberUsr(target.checked); break
+            case "usr_email": 
+                setEmail(target.value); break
+            case "usr_pass": 
+                setPass(target.value); break
+            case "remember_me": 
+                setRememberUsr(target.checked); break
         }
     }
 
-    function validateForm() {
+    async function validateForm() {
         event.preventDefault()
-
+        
         // Primary datas format validation
         if (
             checkEmail(email, setErrMsg) &&
             checkPassord(password, setErrMsg)
         ) {
             // Verify in backend
-            const valid_login = getAuth(
+            if (await getAuth(
                 email, password, remember_me, setErrMsg
-            )
+            )) {
 
-        } else {
-            
+            }
         }
     }
 

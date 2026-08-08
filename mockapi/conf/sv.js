@@ -2,6 +2,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 
 const setAuthRoutes = require('../routes/auth/auth.js')
+const setUserRoutes = require('../routes/user/user.js')
 const {checkToken} = require('../routes/auth/services/helpers.js')
 
 
@@ -14,7 +15,7 @@ const resources_path = path.join(
 
 function ServerPipeline(json_server) {
     const sv = json_server.create()
-
+    
     const resources = json_server.router(resources_path)
 
     sv.use(json_server.defaults())
@@ -23,7 +24,8 @@ function ServerPipeline(json_server) {
     sv.use(cookieParser())
  
     setAuthRoutes(sv, resources)
-
+    setUserRoutes(sv, resources)
+    
     sv.use(resources)
     
     return sv
@@ -49,4 +51,7 @@ function cleanExpiredRefreshTokens(json_server) {
 }
 
 
-module.exports = { ServerPipeline, cleanExpiredRefreshTokens }
+module.exports = { 
+    ServerPipeline, 
+    cleanExpiredRefreshTokens 
+}

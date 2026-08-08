@@ -24,5 +24,4 @@ function checkToken(token) {
 }
 
 
-
 module.exports = {createAuth, checkToken}
