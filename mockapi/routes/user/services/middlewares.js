@@ -4,6 +4,7 @@ function getUserDatas(resources){
         .find({"id": req.locals.usr_id}).value()
 
         req.locals.usr_datas = user
+
         next()
     }
 }

@@ -82,7 +82,7 @@ function refreshToken(resource) {
         const user = resource.db.get("users")
         .find({"id": register.user_id}).value()
 
-        const creds = generateToken(
+        const creds = createAuth(
             "access_token", user.id, user.email
         )
 
@@ -95,34 +95,20 @@ function refreshToken(resource) {
 }}
 
 // "/api/logout"
-const clearSession = (req, res, next, resource) => {
-    const refresh_tk = req.header("refresh_token")
-
-    if (refresh_tk) {
-        resource.db.get("refresh_tokens")
-        .remove({"token": refresh_tk}).write()
-
-        next()
-    }
-}
+function clearSession (){}
 
 // Used by all protected endpoints
 function verifyAccessToken(req, res, next){
     req.locals = req.locals ?? {}
 
     const access_tk = req.cookies.access_token
-
+    
     if (access_tk && checkToken(access_tk)){
         req.locals.usr_id = access_tk.split(" ")[1]
         next()
 
     } else {
-        res.status(401).json(
-            {
-                "status": "unsuccessful",
-                "error": "Invalid access token"
-            }
-        )
+        return res.sendStatus(401)
     }
 }
 

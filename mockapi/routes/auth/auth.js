@@ -1,7 +1,7 @@
 // Middlwares functionalitys
 const {
     searchUser, createUserAuth, 
-    refreshToken, clearSession
+    refreshToken, clearSession, verifyAccessToken
 } = require('./services/middlewares.js')
 
 
@@ -37,10 +37,14 @@ function setAuthRoutes(server, resources) {
         )
     })
 
-    server.post("/api/auth/refresh", 
-        refreshToken(resources), (
-        req, res, next
-    ) => {
+    server.get("/api/auth/test", 
+        verifyAccessToken, (req, res, next) => {
+            res.sendStatus(200)
+        }
+    )
+
+    server.get("/api/auth/refresh", 
+        refreshToken(resources), (req, res, next) => {
         
         // Response header
         res.cookie(
