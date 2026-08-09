@@ -1,5 +1,5 @@
-import { useContext, createContext, useEffect, useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useContext, createContext, useEffect, useState, Children } from 'react'
+import { Navigate } from 'react-router-dom'
 
 
 
@@ -7,60 +7,83 @@ import {useNavigate} from 'react-router-dom'
 // authentication state and user datas
 export const AuthContext = createContext()
 
-// User authentication manager
-export const AuthProvider = ({ children }) => {
+// Authentication tester
+async function testAuth(){
+    let attempts = 0
 
+    while (attempts !== 2){
+        attempts = attempts + 1
 
-    useEffect( async () => {
-            const response = await fetch(
-                "http://localhost:3000/api/user/profile"
-            )
+        const path = attempts === 1 ?
+        "/test" : "/refresh"
 
-            const datas = await response.json()
-            const status = await response.status
-
-            if (status === 200){
-                setUser(
-                    {
-                        "loading": false,
-                        "user": null
-                    }
-                )
-            } else {
-                setUser(
-                    {
-                        "loading": false,
-                        "user": null
-                    }
-                )
+        const response = await fetch(
+            `http://localhost:3000/api/auth${path}`,
+            {
+                "credentials": "include"
             }
-        }, []
-    )
+        )
+        const status = await response.status
+        
+        if (status === 200) {
+            return true
+        }
+    }
+
+    return false
+}
+
+
+export const AuthProvider = ({ children }) => {
+    const [has_auth, setAuth] = useState(false)
+    const [fetching, setFetching] = useState(true)
+
+    // Trigger used by pages components
+    // to alert authentication fails
+    function toogleAuthState(value){
+        setAuth(value)
+    }
+
+    useEffect(() => {        
+        if (!has_auth){
+            setFetching(true)
+
+            testAuth()
+            .then(success => {
+                setFetching(false)
+
+                if (success) {
+                    setAuth(true)
+                } else {setAuth(false)}
+            })
+        }
+    }, [])
+
+    const auth_state = {
+        "has_auth": has_auth, 
+        "fetching": fetching
+    }
 
     return (
-        <AuthContext.Provider>
+        <AuthContext.Provider value = {
+            { auth_state, toogleAuthState }
+        }>
             {children}
         </AuthContext.Provider>
     )
 }
 
 // Navegation flow control
-export const ProtectedContent = ({ page_component }) => {
-    const user_state = useContext(AuthContext)
+export function SetProtectedContent({ page_component }) {
+    const { auth_state } = useContext(AuthContext)
 
-    if (
-        !user_state.fetching &&
-        !user_state.user
-    ) {
-        // navegate to /login
+    if (auth_state.has_auth) {
+        return page_component
 
-    } else if (
-        user_state.fetching &&
-        !user_state.user
-    ) {
-        // render loading content
+    } else if (auth_state.fetching) {
+        return <h1>Aguardando autenticação...</h1>
 
     } else {
-        // render component
+        return <Navigate to="/login" replace />
     }
 }

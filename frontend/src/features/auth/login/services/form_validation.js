@@ -54,7 +54,7 @@ export function checkEmail(email, setErr) {
     return true
 }
 
-export function checkPassord(pass, setErr) {
+export function checkPassword(pass, setErr) {
     if (pass === "") {
         setErr(empty_fields_msg)
         return false

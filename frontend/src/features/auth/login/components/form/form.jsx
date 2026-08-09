@@ -1,20 +1,26 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+/* Contexts */
+import { AuthContext } from '../../../../../contexts/auth.jsx'
+
 /* Access scripts for component functionalitys */
-import {getAuth, checkEmail, checkPassord
+import {getAuth, checkEmail, checkPassword
 } from './form_validation.js'
 
 /* Child elements of the component */
-import LoginFields from './fields'
-import LoginButton from './login_button'
+import LoginFields from './fields.jsx'
+import LoginButton from './login_button.jsx'
 
 import './form.css'
 
 
 
 function LoginForm({ pass_btn_mode }) {
-    // State variables to credetials management
+    const { toogleAuthState } = useContext(AuthContext)
+    const navigate = useNavigate()
+
     const [email, setEmail] = useState("")
     const [password, setPass] = useState("")
     const [remember_me, setRememberUsr] = useState(false)
@@ -41,13 +47,14 @@ function LoginForm({ pass_btn_mode }) {
         // Primary datas format validation
         if (
             checkEmail(email, setErrMsg) &&
-            checkPassord(password, setErrMsg)
+            checkPassword(password, setErrMsg)
         ) {
             // Verify in backend
             if (await getAuth(
                 email, password, remember_me, setErrMsg
             )) {
-
+                toogleAuthState(true)
+                navigate("/profile")
             }
         }
     }

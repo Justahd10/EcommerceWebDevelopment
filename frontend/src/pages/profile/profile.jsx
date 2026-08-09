@@ -1,25 +1,46 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState, useContext } from "react"
 
 /* Component functionalitys */
 import { getUserDatas } from "./profile"
 
+/* Contexts */
+import { AuthContext } from "../../contexts/auth"
 
 
 const ProfilePage = () => {
-  const navigate = useNavigate()
   const [email, setEmail] = useState(null)
   const [pass, setPass] = useState(null)
 
-  // Request user datas
+  // Alert for authentication error during useEffect
+  const { toogleAuthState } = useContext(AuthContext)
+
   useEffect(() => {
-    getUserDatas(setEmail, setPass)
-    .then(found => {
-      if (!found) {navigate("/login")}
+    async function getUserDatas(){
+        const response = await fetch(
+        "http://localhost:3000/api/profile",
+            {
+                "credentials": "include"
+            }
+        )
+        
+        const datas = await response.json()
+        const status = await response.status
+
+        if (status === 200 && datas.user){
+            setEmail(datas.user.email)
+            setPass(datas.user.password)
+            return true
+
+        } else {
+            return false
+        }
+    }
+
+    getUserDatas().then(found => {
+      if (!found) {toogleAuthState(false)}
     })
-  },
-    [setEmail, setPass]
-  )
+    
+  })
 
   return (
     <main>
