@@ -1,0 +1,27 @@
+.parent {
+    height: 100%;
+}
+
+/* Banner removed by default */
+.banner {
+    display: none;
+}
+
+main {
+    
+}
+
+@media (width >= 769px) {
+    .parent {
+        display: flex;
+    }
+
+    main {
+        flex-grow: 1
+    }
+
+    /* Add banner element */
+    .banner {
+        display: block; flex-grow: 2 
+    }
+}

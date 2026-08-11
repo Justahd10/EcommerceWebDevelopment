@@ -1,9 +1,9 @@
 /* Access to child components of the page */
-import LoginForm from '../../features/auth/login/components/form/form'
+import LoginForm from '../../features/auth/login/components/form/form.jsx'
 import LoginHeader from '../../features/auth/login/components/header/header'
 import LoginFooter from '../../features/auth/login/components/extra_infor/login_footer'
 
-import ShopLog from './assets/online_shop_logo_icon.jpg'
+import ShopLog from '../../features/auth/login/assets/online_shop_logo_icon.jpg'
 
 import './login.css'
 
