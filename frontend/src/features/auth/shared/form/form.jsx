@@ -10,106 +10,67 @@ export const ErrMsg = ({ label }) => {
     return <span className = "">{label}</span>
 }
 
-// Inputs models
-const input_types = {
-    "email": {"type": "email", "name": "usr_email"},
-    "password": {"type": "password", "name": "usr_pass"},
-    "pass_confirm": {"type": "password", "name": "pass_confirm"},
-    "remember_me": {"type": "checkbox", "name": "remember_me"}
+export const Input = ({ type, name }) => {
+    const input = <input type = {type} name = {name} />
+
+    return input
 }
 
-export const Input = ({ input_type, configs}) => {
-    const attrs = configs[input_type]
-
-    return <input className = "" 
-            type = {attrs.type} 
-            name = {attrs.name}/>
-}
-
-export const FormButton = ({ configs }) => {
+export const FormButton = ({ btn_class, btn_type, label, name }) => {
     return (
-        <button 
-        className = {configs.btn_class} 
-        type = {configs.btn_type}
-        name = {configs.btn_name}>
-            {configs.btn_label}
-        </button>
+        <button className = {btn_class} type = {btn_type}
+        name = {name}>{label}</button>
     )
 }
+
+const visibility_icon = (
+    <svg className = "" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+        <path d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z"/>
+    </svg>
+)
+
+const visibility_off_icon = (
+    <svg className = "" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+        <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"/>
+    </svg>
+)
+
 
 /*
         Molecules components
 */
-// Fields models
-const fields_types = {
-    "email": {
-        "label": "Email",
-        "structure": (
-            <Input configs = {input_types} 
-            input_type = "email" />
-        )
-    },
-    "password": {
-        "label": "Senha",
-        "structure": (
-            <div className = "">
-                <Input configs = {input_types} 
-                input_type = "password" />
-                <button className = "" type = "submit"></button>
-            </div>
-        )
-    },
-    "pass_confirm": {
-        "label": "Confirmação de senha",
-        "structure": (
-            <Input configs = {input_types} 
-            input_type = "pass_confirm" />
-        )
+export const PassVisibiltyBtn = ({ mode }) => {
+    let btn_icon
+
+    switch (mode){
+        case "show_pass": btn_icon = visibility_icon; break;
+        case "hidde_pass": btn_icon = visibility_off_icon; break;
     }
+
+    return (
+        <button className = "" type = "button">
+            {btn_icon}
+        </button>
+    )
 }
 
-export const Field = ({ field_type, configs }) => {
+export const Field = ({ label, structure }) => {
     return (
         <label className = "">
-            {configs[field_type].label}
-            {configs[field_type].structure}
+            {label}
+            {structure}
         </label>
     )
 }
 
-// Buttons models
-const buttons_types = {
-    "login": [
-        {
-            "btn_class": "", "btn_type": "",
-            "btn_name": "", "btn_label": ""
-        },
-        {
-            "btn_class": "", "btn_type": "",
-            "btn_name": "", "btn_label": ""
-        }
-    ],
-    "register": [
-        {
-            "btn_class": "", "btn_type": "",
-            "btn_name": "", "btn_label": ""
-        }, 
-        {
-            "btn_class": "", "btn_type": "",
-            "btn_name": "", "btn_label": ""
-        }
-    ]
-}
-
-export const FormBtnsGroup = ({ type, configs }) => {
-    const buttons = []
-
-    for (const btn_conf of configs[type]){
-        buttons.push(
-            <FormButton key = {btn_conf.name} 
-            configs = {configs}/>
-        )
-    }
+export const FormBtnsGroup = ({ group_conf }) => {
+    const buttons = group_conf.map(
+        btn_conf => <FormButton
+        btn_class = {btn_conf.btn_class}
+        btn_type = {btn_conf.btn_type}
+        label = {btn_conf.label}
+        name = {btn_conf.name}/>
+    )
 
     return (
         <div className = "">
@@ -118,64 +79,33 @@ export const FormBtnsGroup = ({ type, configs }) => {
     )
 }
 
+
 /*
-        Organis component
+        Organism component
 */
-const Form = ({ form_type }) => {
-    // Fields state variables setting
-    const [fields, setFields] = useState(() => {
-        const fields_values = {"name": "", "password": ""}
-        let new_fields = {}
-
-        switch (form_type){
-            case "login":
-                new_fields = {"remember_me": false}
-                break;
-            
-            case "register":
-                new_fields = {"pass_confirm": ""}
-                break;
-        }
-
-        Object.assign(fields_values, new_fields)
-        return fields_values
-    })
-
-    function toogleFieldsState(){
-        event.preventDefault()
-
-        const target = event.target
-    }
-
-    // Fields building
-    const fields = [
-        <Field configs = {fields_types} 
-        field_type = "email" />, 
-        <Field configs = {fields_types} 
-        field_type = "password" />
-    ]
-
-    if (form_type === "register"){
-        fields.push(
-            <Field configs = {fields_types} 
-            field_type = "pass_confirm"/>
+const Form = ({ configs, form_fields }) => {
+    const fields = form_fields.map(
+        conf => (
+            <Field key = {conf.label} label = {conf.label} 
+            structure = {conf.structure}/>
         )
-    }
+    )
 
     return (
         <form>
             <div className = "">
                 {fields}
             </div>
-            <FormBtnsGroup configs = {buttons_types} 
-            type = {form_type}/>
-            <ErrMsg label = ""/>
+            {/* <ErrMsg label = ""/> */}
+            <FormBtnsGroup group_conf = {} 
+            type = {}/>
         </form>
     )
 }
 
 
 export default Form
+
 
 /*
         Storybook documentation

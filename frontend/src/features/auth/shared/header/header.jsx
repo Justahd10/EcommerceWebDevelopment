@@ -1,24 +1,23 @@
 import PropTypes from "prop-types"
-import "./header.css"
-import { useContext } from "react"
 
+import "./header.css"
 
 
 /*
         Atoms components
 */
-export const Logo = ({image_url}) => {
+export const Logo = ({ image_url, logo_alt }) => {
     return (
         <img src = {
             image_url || ""
-        } alt = "Logo Online Shop"/>
+        } alt = {logo_alt}/>
     )
 }
 
 /*
         Molecules components
 */
-export const Title = ({name, slogan}) => {
+export const Title = ({ name, slogan }) => {
     return (
         <div className = "">
             <h1 className = "">{name || ""}</h1>
@@ -27,14 +26,11 @@ export const Title = ({name, slogan}) => {
     )
 }
 
-export const SubTitle = ({content}) => {
-    const { text1 } = content
-    const { text2 } = content
-
+export const SubTitle = ({ title, description }) => {
     return (
         <div>
-            <h2 className = "">{text1 || ""}</h2>
-            <p className = "">{text2 || ""}</p>
+            <h2 className = "">{title || ""}</h2>
+            <p className = "">{description || ""}</p>
         </div>
     )
 }
@@ -42,19 +38,21 @@ export const SubTitle = ({content}) => {
 /*
         Organism component
 */
-const Header = ({text1, text2}) => {
+const Header = ({ configs }) => {
     return (
         <header>
             <div>
-                <Logo />
-                <Title />
+                <Logo image_url = {} logo_alt = {}/>
+                <Title name = {} slogan = {}/>
             </div>
-            <SubTitle content = {{text1, text2}}/>
+            <SubTitle title = {} description = {} />
         </header>
     )
 }
 
+
 export default Header
+
 
 /*
         StoryBook documentation
