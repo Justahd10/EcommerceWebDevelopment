@@ -1,0 +1,71 @@
+{
+    "header": {
+        "logo_img": {
+            "src": "/src/features/auth/assets/online_shop_logo_icon.jpg",
+            "alt": "Logo Online Shop"
+        },
+        "title": {
+            "name": "Tech Shop",
+            "slogan": "A melhor para o consumidor online"
+        },
+        "subtitle": {
+            "title": "Faça login",
+            "desc": "E veja o que a nossa loja tema oferecer"
+        }
+    },
+
+    "form": {
+        "fields": [
+            {
+                "label": "Email",
+                "type": "EmailField",
+                "input_attrs": {
+                    "type": "email",
+                    "name": "usr_email"
+                }
+            },
+            {
+                "label": "Senha",
+                "type": "PasswordField",
+                "input_attrs": {
+                    "type": "password",
+                    "name": "usr_pass"
+                }
+            },
+            {
+                "label": "Confirmação de senha",
+                "type": "ConfirmPassField",
+                "input_attrs": {
+                    "type": "password",
+                    "name": "usr_confirm_pass"
+                }
+            }
+        ],
+        "buttons": [
+            {
+                "btn_class": "primary-form-button",
+                "btn_type": "submit",
+                "label": "LOGIN"
+            },
+            {
+                "btn_class": "secondary-form-button",
+                "btn_type": "button",
+                "label": "CRIAR CONTA"
+            }
+        ]
+    },
+    
+    "socialAuth": {
+        "btns_attrs": [
+            {
+                "label": "Google",
+                "img_url": "/src/features/auth/assets/google_icon.png"
+            },
+            {
+                "label": "Facebook",
+                "img_url": "/src/features/auth/assets/facebook_icon.png"
+            }
+        ],
+        "label": "ou entre com"
+    }
+}

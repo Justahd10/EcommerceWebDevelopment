@@ -1,0 +1,19 @@
+/* FormButton */
+.primary-form-button{
+    background-color: white; color: black;
+}
+
+.secondary-form-button{
+    background-color: white; color: red;
+}
+
+
+/* PassVisibiltyBtn */
+.pass-view-btn{
+    background-color: red;
+}
+.pass-view-btn-icon{
+    fill: black; height: 24px; width: 24px;
+}
+
+/* Field */

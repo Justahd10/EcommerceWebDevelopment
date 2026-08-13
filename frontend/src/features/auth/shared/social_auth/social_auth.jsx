@@ -32,21 +32,21 @@ export const SocialLoginButton = ({ label, img_url }) => {
 /*
         Organisms component
 */
-const SocialAuthSection = ({ type, btns_attrs, text_label }) => {
-    let social_login_btns = btns_attrs.map(
-        item => <SocialLoginButton key = {item.label}
-        img_url = {item.img_url} label = {item.label}/>
+const SocialAuthSection = ({ configs }) => {
+    let social_login_btns = configs.btns_attrs.map(
+        item => <SocialLoginButton key={item.label}
+        img_url={item.img_url} label={item.label}/>
     )
     
     social_login_btns = (
-        <div className = "">
+        <div className="">
             {social_login_btns}
         </div>
     )
 
     return (
         <section>
-            <TextDivider label = {text_label}/>
+            <TextDivider label={configs.label}/>
             {social_login_btns}
         </section>
     )

@@ -1,20 +1,18 @@
 /* Access to child components of the page */
-import LoginForm from '../../features/auth/login/components/form/form.jsx'
-import LoginHeader from '../../features/auth/login/components/header/header'
-import LoginFooter from '../../features/auth/login/components/extra_infor/login_footer'
-
-import ShopLog from '../../features/auth/login/assets/online_shop_logo_icon.jpg'
+import Header from '../../features/auth/shared/header/header'
+import Form from '../../features/auth/shared/form/form'
+import SocialAuthSection from '../../features/auth/shared/social_auth/social_auth'
 
 import './login.css'
 
 
 
-const LoginPage = () => {
+const LoginPage = ({ page_configs }) => {
     return (
         <main className = "login-main-content">
-            <LoginHeader primary logo_img = {ShopLog}/>
-            <LoginForm pass_btn_mode = "show"/>
-            <LoginFooter text = "Já sou cadastrado"/>
+            <Header configs={page_configs.header}/>
+            <Form configs={page_configs.form}/>
+            <SocialAuthSection configs={page_configs.socialAuth}/>
         </main>
     )
 }
