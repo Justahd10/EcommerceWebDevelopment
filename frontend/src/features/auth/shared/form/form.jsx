@@ -10,12 +10,6 @@ export const ErrMsg = ({ label }) => {
     return <span className = "">{label}</span>
 }
 
-export const Input = ({ type, name }) => {
-    const input = <input type = {type} name = {name} />
-
-    return input
-}
-
 export const FormButton = ({ btn_class, btn_type, label, name }) => {
     return (
         <button className = {btn_class} type = {btn_type}
