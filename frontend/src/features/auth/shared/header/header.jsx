@@ -53,3 +53,6 @@ export default Header
 /*
         StoryBook documentation
 */
+Header.propTypes = {
+    configs: PropTypes.object.isRequired
+}

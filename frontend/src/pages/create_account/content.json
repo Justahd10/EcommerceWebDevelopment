@@ -9,8 +9,8 @@
             "slogan": "A melhor para o consumidor online"
         },
         "subtitle": {
-            "title": "Faça login",
-            "desc": "E veja o que a nossa loja tema oferecer"
+            "title": "Crie sua conta",
+            "desc": "e desbloqueie ofertas exclusivas"
         }
     },
 
@@ -34,10 +34,10 @@
             },
             {
                 "label": "Confirmação de senha",
-                "type": "ConfirmPassField",
+                "type": "PassConfirmField",
                 "input_attrs": {
                     "type": "password",
-                    "name": "usr_confirm_pass"
+                    "name": "usr_pass_confirm"
                 }
             }
         ],
@@ -45,12 +45,12 @@
             {
                 "btn_class": "primary-form-button",
                 "btn_type": "submit",
-                "label": "LOGIN"
+                "label": "CADASTRAR"
             },
             {
                 "btn_class": "secondary-form-button",
                 "btn_type": "button",
-                "label": "CRIAR CONTA"
+                "label": "LOGIN"
             }
         ]
     },
@@ -66,6 +66,6 @@
                 "img_url": "/src/features/auth/assets/facebook_icon.png"
             }
         ],
-        "label": "ou entre com"
+        "label": "ou cadastre-se com"
     }
 }

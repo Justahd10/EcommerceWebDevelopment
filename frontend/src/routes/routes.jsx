@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CreateAccountPage from "../pages/create_account/create_account.jsx";
 
 import LoginPage from "../pages/login/login";
-import loginPageContent from "../pages/login/login.json"
+import loginPageContent from "../pages/login/content.json"
 
 // Auth security
 import { SetProtectedContent } from "../contexts/auth.jsx";

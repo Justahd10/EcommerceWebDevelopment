@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -86,6 +87,7 @@ export const Field = ({
 export const FormBtnsGroup = ({ group_conf }) => {
     const buttons = group_conf.map(
         btn_conf => <FormButton
+        key={btn_conf.label}
         btn_class={btn_conf.btn_class}
         btn_type={btn_conf.btn_type}
         label={btn_conf.label}/>
@@ -111,10 +113,13 @@ const Form = ({ configs }) => {
     )
 
     return (
-        <form className="">
+        <form className="" onSubmit={onSubmit}>
             <div className="">
                 {fields}
             </div>
+
+            <Link to="/">Equeci minha senha</Link>
+
             {/* <span className="">{label}</span> */}
             <FormBtnsGroup 
             group_conf={configs.buttons}/>
@@ -130,20 +135,23 @@ export default Form
         Storybook documentation
 */
 FormButton.propTypes = {
-    btn_class: PropTypes.oneOf(
-        ['submit-form-button', 'nav-form-button']
-    ),
+    btn_class: PropTypes.oneOf([
+        'primary-form-button', 'secondary-form-button'
+    ]),
     btn_type: PropTypes.oneOf(['submit', 'button']),
     label: PropTypes.string.isRequired
 }
 
 PassVisibiltyBtn.propTypes = {
-    mode: PropTypes.oneOf(['show_pass', "hidde_pass"])
+    mode: PropTypes.oneOf([
+        'show_pass', "hidde_pass"
+    ])
 }
 
 Field.propTypes = {
     label: PropTypes.string.isRequired,
-    field_type: PropTypes.oneOf(
-        ['email', 'password', 'pass_confirm', 'remember_me']
-    )
+    field_type: PropTypes.oneOf([
+        'EmailField', 'PasswordField', 
+        'PassConfirmField', 'RememberField'
+    ])
 }

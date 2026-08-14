@@ -1,17 +1,28 @@
-import { PassVisibiltyBtn } from "../form";
+import { MemoryRouter } from 'react-router-dom'
+import Form from "../form";
+
+import login_page_content from '../../../../../pages/login/content.json'
 
 
 
 export default {
     title: "Auth/Shared/Form",
-    component: PassVisibiltyBtn,
+    component: Form,
     parameters: {
         layout: "centered"
     },
-    args: {
-        mode: "show_pass"
-    }
+    decorators: [
+        (Story) => {
+            <MemoryRouter>
+                <Story />
+            </MemoryRouter>
+        }
+    ]
 }
 
 
-export const PrimaryButton = {}
+export const LoginForm = {
+    args: {
+        configs: login_page_content.form
+    }
+}

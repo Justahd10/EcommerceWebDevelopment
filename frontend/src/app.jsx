@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 /* Contexts */
 import { AuthProvider } from './contexts/auth.jsx'
+
 /* Routes */
 import routes from './routes/routes.jsx'
 import { RouterProvider } from 'react-router-dom'
@@ -11,9 +12,7 @@ import { RouterProvider } from 'react-router-dom'
 
 const App = () => {
   return (
-    <AuthProvider>
-      <RouterProvider router = {routes} />
-    </AuthProvider>
+    <RouterProvider router = {routes} />
   )
 }
 

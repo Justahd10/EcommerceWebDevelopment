@@ -59,3 +59,14 @@ export default SocialAuthSection
 /*
         Storybook documentation
 */
+SocialLoginButton.propTypes = {
+    label: PropTypes.string.isRequired,
+    img_url: PropTypes.oneOf([
+        '/src/features/auth/assets/google_icon.png',
+        '/src/features/auth/assets/facebook_icon.png'
+    ])
+}
+
+SocialAuthSection.propTypes = {
+    configs: PropTypes.object.isRequired
+}
