@@ -6,15 +6,35 @@ const pass_r = /^.{8,}$/
 
 const empty_fields_msg = "Preencha todos os campos"
 
+/*
+        Fields validators
+*/
+export function checkEmail(email) {
+
+    const validation_result = 
+    (email === "" || !email_r.test(email)) ?
+    "Insira um formato de email válido" : true
+
+    return validation_result
+}
+
+export function checkPassword(pass) {
+    const validation_result = 
+    (pass === "" || !pass_r.test(pass)) ?
+    "Senha deverá conter no mínimo 8 caracteres" : true
+
+    return validation_result
+}
 
 /* 
-        Functions to validate values of the login form
+        Submit callback functions
 */
-export async function getAuth(email, pass, remember_me, setErr) {
+// 1. Login
+export async function getAuth(data) {
     const req_body = JSON.stringify({
-        "email": email,
-        "password": pass,
-        "remember_me": remember_me
+        "email": data.usr_email,
+        "password": data.usr_pass,
+        "remember_me": data.remember_me
     })
 
     const response = await fetch(
@@ -32,36 +52,15 @@ export async function getAuth(email, pass, remember_me, setErr) {
     const datas = await response.json()
     const status = await response.status
     
-    if (status === 200) {
-        setErr("")
-        return true
-    } 
-    else {
-        setErr("Conta não encontrada")
-        return false
-    }
-}
-
-export function checkEmail(email, setErr) {
-    if (email === "") {
-        setErr(empty_fields_msg)
-        return false
-    } else if (!email_r.test(email)) {
-        setErr("Insira um email válido")
-        return false
+    if (status !== 200) {
+        return {
+            msg_class: "",
+            msg: "Email ou senha inválidos"
+        }
     }
 
-    return true
-}
-
-export function checkPassword(pass, setErr) {
-    if (pass === "") {
-        setErr(empty_fields_msg)
-        return false
-    } else if (!pass_r.test(pass)) {
-        setErr("Insria uma senha válida")
-        return false
+    return {
+        msg_class: "",
+        msg: ""
     }
-
-    return true
 }

@@ -5,6 +5,15 @@ import register_page_content from '../../../../../pages/create_account/content.j
 
 
 
+Field.propTypes = {
+    label: PropTypes.string.isRequired,
+    field_type: PropTypes.oneOf([
+        'EmailField', 'PasswordField', 
+        'PassConfirmField', 'RememberField'
+    ])
+}
+
+
 export default {
     title: "Auth/Shared/Form",
     component: Field,

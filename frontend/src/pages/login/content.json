@@ -9,12 +9,14 @@
             "slogan": "A melhor para o consumidor online"
         },
         "subtitle": {
+            "container_style": "",
             "title": "Faça login",
             "desc": "E veja o que a nossa loja tema oferecer"
         }
     },
 
     "form": {
+        "class_name": "",
         "fields": [
             {
                 "label": "Email",
@@ -31,18 +33,39 @@
                     "type": "password",
                     "name": "usr_pass"
                 }
-            }
-        ],
-        "buttons": [
-            {
-                "btn_class": "primary-form-button",
-                "btn_type": "submit",
-                "label": "LOGIN"
             },
             {
-                "btn_class": "secondary-form-button",
-                "btn_type": "button",
-                "label": "CADASTRAR"
+                "label": "Mantenha-me conectado",
+                "type": "RememberField",
+                "input_attrs": {
+                    "type": "checkbox",
+                    "name": "remember_me"
+                }
+            }
+        ],
+        "actions": [
+            {
+                "act_type": "submit_btn",
+                "configs": {
+                    "class_name": "",
+                    "label": "LOGIN"
+                }
+            },
+            {
+                "act_type": "nav_link",
+                "configs": {
+                    "class_name": "",
+                    "label": "Me cadastrar",
+                    "link": "/create_account"
+                }
+            },
+            {
+                "act_type": "nav_link",
+                "configs": {
+                    "class_name": "",
+                    "label": "Esqueci minha senha",
+                    "link": "/reset_password"
+                }
             }
         ]
     },

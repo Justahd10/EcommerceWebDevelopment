@@ -1,0 +1,89 @@
+{
+    "email_step": {
+        "header": {
+            "logo_img": {
+                "src": "/src/features/auth/assets/online_shop_logo_icon.jpg",
+                "alt": "Logo Online Shop"
+            },
+            "subtitle": {
+                "container_style": "",
+                "title": "Redefinição de senha",
+                "desc": "Digite seu email para enviarmos um código de redefinição de senha"
+            }
+        },
+
+        "form": {
+            "fields": [
+                {
+                    "label": "Email",
+                    "type": "EmailField",
+                    "input_attrs": {
+                        "type": "email",
+                        "name": "usr_email"
+                    }
+                }
+            ],
+            "actions": [
+                {
+                    "act_type": "submit_btn",
+                    "class_name": "",
+                    "label": "ENVIAR"
+                },
+                {
+                    "act_type": "nav_link",
+                    "class_name": "",
+                    "label": "Fazer login"
+                }
+            ]
+        }
+},
+    
+    "code_step": {
+        "header": {
+            "logo_img": {
+                "src": "/src/features/auth/assets/online_shop_logo_icon.jpg",
+                "alt": "Logo Online Shop"
+            },
+            "subtitle": {
+                "title": "Redefinição de senha",
+                "desc": "Insira o código de redefinição de senha que você recebeu por email e sua nova senha"
+            }
+        },
+
+        "form": {
+            "fields": [
+                {
+                    "label": "Código",
+                    "type": "CodeField",
+                    "input_attrs": {
+                        "type": "text",
+                        "name": "reset_pass_code"
+                    }
+                },
+                {
+                    "label": "Nova senha",
+                    "type": "PasswordField",
+                    "input_attrs": {
+                        "type": "password",
+                        "name": "usr_pass"
+                    }
+                },
+                {
+                   "label": "Confirmação da nova senha",
+                    "type": "PassConfirmField",
+                    "input_attrs": {
+                        "type": "password",
+                        "name": "usr_pass_confirm"
+                    }
+                }
+            ],
+            "actions": [
+                {
+                    "act_type": "submit_btn",
+                    "class_name": "",
+                    "label": "Redefinir"
+                }
+            ]
+        }
+    }
+}

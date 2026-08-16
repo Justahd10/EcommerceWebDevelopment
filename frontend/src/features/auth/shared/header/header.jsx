@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"
-
 import "./header.css"
 
 
@@ -16,11 +14,20 @@ export const Title = ({ name, slogan }) => {
     )
 }
 
-export const SubTitle = ({ title, description }) => {
+export const SubTitle = ({ 
+    container_style, title, 
+    desc, usr_email
+ }) => {
     return (
-        <div>
+        <div className={container_style}>
             <h2 className="">{title}</h2>
-            <p className="">{description}</p>
+            {
+                usr_email &&
+                <span className="">
+                    Email enviado para {usr_email}
+                </span>
+            }
+            {desc && <p className="">{desc}</p>}
         </div>
     )
 }
@@ -29,30 +36,35 @@ export const SubTitle = ({ title, description }) => {
 /*
         Organism component
 */
-const Header = ({ configs }) => {
+const Header = ({ configs, usr_email }) => {
     return (
         <header>
             <div className = "">
-                <img src={configs.logo_img.src}
-                alt={configs.logo_img.alt}/>
-                
-                <Title name={configs.title.name} 
-                slogan={configs.title.slogan}/>
+                {
+                    configs.logo_img &&
+                    <img src={configs.logo_img.src}
+                    alt={configs.logo_img.alt}/>
+                }
+
+                {
+                    configs.title &&
+                    <Title name={configs.title.name} 
+                    slogan={configs.title.slogan}/>
+                }
             </div>
 
-            <SubTitle title={configs.subtitle.title} 
-            description={configs.subtitle.desc} />
+                {
+                    configs.subtitle &&
+                    <SubTitle usr_email={usr_email}
+                    container_style={
+                        configs.subtitle.container_style
+                    }
+                    title={configs.subtitle.title} 
+                    desc={configs.subtitle.desc} />
+                }
         </header>
     )
 }
 
 
 export default Header
-
-
-/*
-        StoryBook documentation
-*/
-Header.propTypes = {
-    configs: PropTypes.object.isRequired
-}

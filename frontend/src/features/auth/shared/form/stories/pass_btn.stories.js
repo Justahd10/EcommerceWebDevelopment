@@ -2,6 +2,12 @@ import { PassVisibiltyBtn } from "../form";
 
 
 
+PassVisibiltyBtn.propTypes = {
+    mode: PropTypes.oneOf([
+        'show_pass', "hidde_pass"
+    ])
+}
+
 export default {
     title: "Auth/Shared/Form",
     component: PassVisibiltyBtn,
