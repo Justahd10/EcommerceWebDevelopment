@@ -8,11 +8,12 @@
             "subtitle": {
                 "container_style": "",
                 "title": "Redefinição de senha",
-                "desc": "Digite seu email para enviarmos um código de redefinição de senha"
+                "desc": "Digite o email de sua conta. Enviaremos um código de redefinição de senha"
             }
         },
 
         "form": {
+            "class_name": "",
             "fields": [
                 {
                     "label": "Email",
@@ -26,13 +27,19 @@
             "actions": [
                 {
                     "act_type": "submit_btn",
-                    "class_name": "",
-                    "label": "ENVIAR"
+                    "configs": {
+                        "class_name": "",
+                        "label": "ENVIAR"
+                    }
+
                 },
                 {
                     "act_type": "nav_link",
-                    "class_name": "",
-                    "label": "Fazer login"
+                    "configs": {
+                        "class_name": "",
+                        "label": "Fazer login",
+                        "link": "/login"
+                    }
                 }
             ]
         }
@@ -51,6 +58,7 @@
         },
 
         "form": {
+            "class_name": "",
             "fields": [
                 {
                     "label": "Código",
@@ -80,8 +88,10 @@
             "actions": [
                 {
                     "act_type": "submit_btn",
-                    "class_name": "",
-                    "label": "Redefinir"
+                    "configs": {
+                        "class_name": "",
+                        "label": "Redefinir"
+                    }
                 }
             ]
         }

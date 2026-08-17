@@ -1,48 +1,45 @@
-const {createAuth, checkToken} = require('./helpers.js')
+const {generateToken, validateToken} = require('./helpers.js')
 
 
 // "/api/login"
-function searchUser(resource) {
+function getUserByCredentials(resource, creds) {
     return (req, res, next) => {
         req.locals = req.locals ??  {}
 
-        const email = req.body.email
-        const pass = req.body.password
+        const filter = {}
+        for (const cred of creds){
+            filter[cred] = req.body[cred]
+            req.locals[cred] = req.body[cred]
+        }
 
-        req.locals.email = email
-        req.locals.pass = pass
-
-        const users = resource.db.get("users")
-        const user = users.find(
-            {
-                "email": email, 
-                "senha": pass
-            }
-        ).value()
+        const user = resource.db.get("users")
+        .find(filter).value()
         
         if (user) {
             req.locals.usr_id = user.id
             next()
         } 
         else {
-            return res.status(401).json(
-                {
-                    "status": "unsuccessful",
-                    "error": "Account not found"
-                }
-            )
+            if (creds === ["email"]){
+                return res.sendStatus(202)
+            }
+
+            return res.sendStatus(401)
         }
     }
 }
 
-function createUserAuth(resource) {
+
+function createAuthentication(resource) {
     return (req, res, next) => {
 
     const tks = ["access_token"]
-    if (req.body.remember_me) {tks.push("refresh_token")}
+    if (req.body.remember_me) {
+        tks.push("refresh_token")
+    }
 
     for (const tk of tks){
-        const creds = createAuth(
+        const creds = generateToken(
             tk,
             req.locals.usr_id,
             req.locals.email
@@ -73,12 +70,10 @@ function refreshToken(resource) {
     
     const refresh_tk = req.cookies.refresh_token
 
-    const register = resource.db.get("refresh_tokens")
-    .find({"token": refresh_tk}).value()
+    const validated = 
+    validateToken(refresh_tk, "auth_token", resource)
 
-    if (
-        refresh_tk && checkToken(refresh_tk) && register
-    ) {
+    if (refresh_tk && validated) {
         const user = resource.db.get("users")
         .find({"id": register.user_id}).value()
 
@@ -103,7 +98,10 @@ function verifyAccessToken(req, res, next){
 
     const access_tk = req.cookies.access_token
     
-    if (access_tk && checkToken(access_tk)){
+    if (
+        access_tk && 
+        validateToken(access_tk, "auth_token")
+    ){
         req.locals.usr_id = access_tk.split(" ")[1]
         next()
 
@@ -113,7 +111,7 @@ function verifyAccessToken(req, res, next){
 }
 
 module.exports = {
-    searchUser, createUserAuth,
+    getUserByCredentials, createAuthentication,
     refreshToken, clearSession,
     verifyAccessToken
 }

@@ -15,18 +15,11 @@ export const Title = ({ name, slogan }) => {
 }
 
 export const SubTitle = ({ 
-    container_style, title, 
-    desc, usr_email
+    container_style, title, desc
  }) => {
     return (
         <div className={container_style}>
             <h2 className="">{title}</h2>
-            {
-                usr_email &&
-                <span className="">
-                    Email enviado para {usr_email}
-                </span>
-            }
             {desc && <p className="">{desc}</p>}
         </div>
     )
@@ -36,7 +29,7 @@ export const SubTitle = ({
 /*
         Organism component
 */
-const Header = ({ configs, usr_email }) => {
+const Header = ({ configs }) => {
     return (
         <header>
             <div className = "">
@@ -55,8 +48,7 @@ const Header = ({ configs, usr_email }) => {
 
                 {
                     configs.subtitle &&
-                    <SubTitle usr_email={usr_email}
-                    container_style={
+                    <SubTitle container_style={
                         configs.subtitle.container_style
                     }
                     title={configs.subtitle.title} 

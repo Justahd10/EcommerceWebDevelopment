@@ -1,13 +1,14 @@
 // Middlwares functionalitys
 const {
-    searchUser, createUserAuth, 
+    getUserByCredentials, createAuthentication, 
     refreshToken, clearSession, verifyAccessToken
 } = require('./services/middlewares.js')
 
 
 function setAuthRoutes(server, resources) {
     server.post("/api/auth/login",
-        searchUser(resources), createUserAuth(resources), (
+        getUserByCredentials(resources, ["email", "password"]), 
+        createAuthentication(resources), (
         req, res, next
     ) => {
         

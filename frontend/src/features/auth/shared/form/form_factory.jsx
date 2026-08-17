@@ -147,7 +147,8 @@ const Form = ({ configs }) => {
         configs.model.callback_func
 
         if (callback_func){
-            const result = await callback_func(datas)
+            const result = 
+            await callback_func(datas)
             setCallBack(result)
         }
     }
