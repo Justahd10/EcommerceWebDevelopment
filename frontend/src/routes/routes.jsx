@@ -52,7 +52,9 @@ const routes = createBrowserRouter(
         },
         {
             "path": "/redefinir-senha/:token",
-            element: <h1>Página de redefinição de senha - Etapa do código</h1>
+            element: <ResetPasswordCodePage 
+            page_content={resetPassPagesContents.code_step}
+            form_conf={form_functionalitys}/>
         },
         {
             "path": "/perfil",

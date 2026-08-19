@@ -1,5 +1,5 @@
 const {getUserDatas} = require("./services/middlewares.js")
-const {verifyAccessToken} = require("../auth/services/middlewares.js")
+const {verifyAccessToken} = require("../auth/services/session.js")
 
 
 

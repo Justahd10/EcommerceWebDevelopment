@@ -1,6 +1,6 @@
 // on submit functions of each form type
 import { requestLogin } from "../../request_login.js"
-import { checkEmail, checkPassword } 
+import { checkEmail, checkPassword, checkPassConfirm } 
 from "../services/fields_validators.js"
 
 import { 
@@ -32,13 +32,23 @@ const form_functionalitys = {
             "usr_email": ""
         },
         "callback_func": sendPasswordResetEmail,
-        "reset_callback": false,
+        "reset_callback": true,
         "validators": {
             "usr_email": checkEmail
         }
     },
     "reset_password_code": {
-        "submit_func": null,
+        "default_values": {
+            "pass_reset_code": "",
+            "usr_pass": "",
+            "usr_pass_confirm": ""
+        },
+        "callback_func": null,
+        "reset_callback": true,
+        "validators": {
+            "pass_reset_code": checkPassConfirm,
+            "usr_pass": checkPassword
+        }
     }
 }
 

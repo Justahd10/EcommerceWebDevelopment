@@ -97,7 +97,6 @@ export const Field = ({
 */
 // Authentication feature form factory
 const Form = ({ configs }) => {
-    // Form setup
     const {
         register, handleSubmit, formState: { errors }
     } = useForm(
@@ -107,7 +106,6 @@ const Form = ({ configs }) => {
         }
     )
 
-    // Field factory Function
     function generateFormFields(){
         const fields = 
         configs.content.fields.map(
@@ -125,7 +123,6 @@ const Form = ({ configs }) => {
         return fields
     }
 
-    // Action factory function
     function generateFormActions(){
         const form_actions =
         configs.content.actions.map(
@@ -138,7 +135,6 @@ const Form = ({ configs }) => {
         return form_actions
     }
 
-    // Submited form state
     const [callback, setCallBack] =
     useState({"msg": "", "msg_class": ""})
 

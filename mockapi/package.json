@@ -4,7 +4,7 @@
   "description": "",
   "main": "sv.js",
   "scripts": {
-    "mock-api": "nodemon --watch resources --ext json --exec \"py conf/resourcers_build.py && node main.js\""
+    "server": "nodemon --watch resources --ext json --exec \"py conf/resourcers_build.py && node main.js\""
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,8 @@
   "type": "commonjs",
   "dependencies": {
     "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "nodemailer": "^9.0.5",
     "nodemon": "^3.1.14"
   },
   "devDependencies": {

@@ -3,7 +3,8 @@ const cookieParser = require('cookie-parser')
 
 const setAuthRoutes = require('../routes/auth/auth.js')
 const setUserRoutes = require('../routes/user/user.js')
-const {checkToken} = require('../routes/auth/services/helpers.js')
+const {validateToken} = 
+require('../routes/auth/services/tokens.js')
 
 
 /*
@@ -38,7 +39,7 @@ function cleanExpiredRefreshTokens(json_server) {
         resources.db.getState().refresh_tokens
 
         for (const item of refresh_tokens){
-            const valid_tk = checkToken(item.token)
+            const valid_tk = validateToken(item.token, "auth_token")
 
             if (!valid_tk){
                 resources.db.get("refresh_tokens")

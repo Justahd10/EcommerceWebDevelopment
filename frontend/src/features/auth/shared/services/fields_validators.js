@@ -25,3 +25,7 @@ export function checkPassword(pass) {
 
     return validation_result
 }
+
+export function checkPassConfirm(){
+    
+}

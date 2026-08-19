@@ -65,7 +65,7 @@
                     "type": "CodeField",
                     "input_attrs": {
                         "type": "text",
-                        "name": "reset_pass_code"
+                        "name": "pass_reset_code"
                     }
                 },
                 {

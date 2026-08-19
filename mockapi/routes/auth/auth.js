@@ -1,8 +1,20 @@
 // Middlwares functionalitys
-const {
-    getUserByCredentials, createAuthentication, 
-    refreshToken, clearSession, verifyAccessToken
-} = require('./services/middlewares.js')
+const { 
+    getUserByCredentials, createAuthentication
+ } = 
+require('./services/login.js')
+const { 
+    refreshToken, verifyAccessToken
+ } = 
+require('./services/session.js')
+
+const { 
+    registerResetPassToken, sendPassResetEmail,
+    validateResetToken
+ } = 
+require('./services/pass_reset.js')
+
+
 
 
 function setAuthRoutes(server, resources) {
@@ -60,12 +72,42 @@ function setAuthRoutes(server, resources) {
         res.sendStatus(200)
     })
 
+    server.post(
+        "/api/auth/pass_reset_request",
+        getUserByCredentials(resources, ['email']),
+        registerResetPassToken(resources),
+        sendPassResetEmail(resources),
+        (req, res, next) => {
+            
+            // success response
+            return res.sendStatus(202)
+        }
+    )
 
-/*     server.post("/api/logout", clearSession, (
-        req, res, next, resource
-    ) => {
-        // Logic for logout proccesing
-    }) */
+    server.post(
+        "/api/auth/pass_reset_validate",
+        validateResetToken(resources),
+        (req, res, next) => {
+            
+            if (req.locals.valid_reset_tk){
+                return res.sendStatus(200)
+            } else {
+                return res.sendStatus(401)
+            }
+        }
+    )
+    
+/*     server.get(
+        "/api/auth/reset_password_confirm",
+        resetPassword(resources),
+        (req, res, next) => {
+            
+            // Success response
+
+
+            // Unsuccessful response
+        }
+    ) */
 }
 
 

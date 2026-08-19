@@ -3,19 +3,12 @@
 */
 function createResetPassToken(){
     let tk = ""
-    const chars = [
-        "A","B","C","D","E","F","G","H","I","J","K","L","M","N",
-        "O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b",
-        "c","d","e","f","g","h","i","j","k","l","m","n","o","p",
-        "q","r","s","t","u","v","w","x","y","z","0","1","2","3",
-        "4","5","6","7","8","9","!","?",".",",",";",":","'","\"",
-        "-","_","+","=","%","<",">","(",")","[","]","{","}","@",
-        "#","$","&","|","^","~","\\","´","`"," "
-    ]
+    const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
     
     while (tk.length !== 64){
-        const choose = 
-        chars[Math.floor(Math.random() * chars.length + 1)]
+        const choose =
+        chars[Math.floor(Math.random() * chars.length)]
         tk = tk + choose
     }
 
@@ -48,15 +41,15 @@ function createAuthToken(type, id, email){
 function getTokenDatas(tk, resource){
     const tk_type = 
     tk.includes("refresh_token") ?
-    "refresh_token" : "pass_reset_token"
+    "refresh_tokens" : "pass_reset_tokens"
 
     const token = resource.db.get(tk_type)
-    .find({"token": token}).value()
+    .find({"token": tk}).value()
 
     return token
 }
 
-function validateAuthToken(tk, resource){
+function validateAuthToken(tk, resource = null){
     // Validate access token
     if (
         tk.includes("access_token") &&
