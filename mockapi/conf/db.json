@@ -1,14 +1,13 @@
 {
-  "pass_reset_tokens": [
+  "pass_reset_tokens": [],
+  "refresh_tokens": [
     {
       "user_id": "1",
-      "token": "xSVYx24C9e9tVErbu00DQ1e2rCd1csAHsfJo32rlXmJZ9_36nSCekbAsH4GYlh_Q",
-      "create_at": "2026-08-19T09:11:14.474Z",
-      "expires": "2026-08-19T09:41:14.476Z",
-      "code": "240762"
+      "token": "refresh_token 1 diognasde06@gmail.com 2026-08-21T10:05:17.015Z 2026-08-21T11:05:17.015Z",
+      "create_at": "2026-08-21T10:05:17.015Z",
+      "expires": "2026-08-21T11:05:17.015Z"
     }
   ],
-  "refresh_tokens": [],
   "users": [
     {
       "id": "1",

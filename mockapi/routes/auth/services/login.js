@@ -1,3 +1,4 @@
+const { doDbQuery } = require("../../helpers.js")
 const { generateToken } = require('./tokens.js')
 
 
@@ -40,21 +41,23 @@ function createAuthentication(resource) {
 
     for (const tk of tks){
         const creds = generateToken(
-            tk,
-            req.locals.usr_id,
-            req.locals.email
+            { "type": "auth_token", "name": tk },
+            {
+                "id": req.locals.usr_id,
+                "email": req.locals.email
+            }
         )
 
         if (tk === "refresh_token") {
-            resource.db.get("refresh_tokens")
-            .push(
-                {
+            doDbQuery(
+                resource, "refresh_tokens",
+                "push", {
                     "user_id": req.locals.usr_id,
                     "token": creds.token,
                     "create_at": creds.create_at,
                     "expires": creds.expires
                 }
-            ).write()
+            )
         }
 
         req.locals[tk] = creds

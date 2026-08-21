@@ -19,13 +19,13 @@ function createResetPassToken(){
     }
 }
 
-function createAuthToken(type, id, email){
-    const exp_time = type === "access_token" ? 15 : 60
+function createAuthToken(type, datas){
+    const mins = type === "access_token" ? 15 : 60
 
     const create_at = new Date(Date.now()).toISOString()
-    const expires = new Date(Date.now() + (exp_time * 60 * 1000))
+    const expires = new Date(Date.now() + (mins * 60 * 1000))
     const tk = 
-    `${type} ${id} ${email} ${create_at} ${expires.toISOString()}`
+    `${type} ${datas.id} ${datas.email} ${create_at} ${expires.toISOString()}`
 
     return {
         "token": tk,
@@ -90,7 +90,7 @@ function validatePassResetToken(tk, resource){
 }
 
 const token_conf = {
-    "reset_pass_token": {
+    "pass_reset_token": {
         "create_func": createResetPassToken,
         "validator": validatePassResetToken
     },
@@ -101,10 +101,14 @@ const token_conf = {
 }
 
 
-function generateToken(type, datas = null){
+function generateToken(format, datas = null){
+    const { type } = format
     const create_tk = token_conf[type].create_func
     
-    if (datas){return create_tk(datas)}
+    if (datas){
+        const { name } = format
+        return create_tk(name, datas)
+    }
     else {return create_tk()}
 }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import visibility_icon 
 from "../../assets/visibility.svg"
@@ -35,20 +36,17 @@ export const FormAction = ({ act_type, configs }) => {
 /*
         Molecules components
 */
-export const PassVisibiltyBtn = ({ mode }) => {
-    const btn_icon = 
-    mode === "show_pass" ? visibility_icon : visibility_off_icon;
+export const PassVisibiltyBtn = () => {
 
     return (
         <button className="pass-view-btn" type="button">
-            <img src={btn_icon} alt="" />
+            <img src={visibility_icon} alt="" />
         </button>
     )
 }
 
 export const Field = ({ 
-    field_type, input_attrs, label, 
-    register, validators
+    field_type, input_attrs, label, register
  }) => {
     // Set input style class by field type
     const input_class = 
@@ -56,12 +54,7 @@ export const Field = ({
 
     // Set input attributes and validator
     const input = <input 
-    {
-        ...register(
-            input_attrs.name,
-            {validate: validators[input_attrs.name]}
-        )
-    }
+    {...register(input_attrs.name)}
     className={input_class}
     type={input_attrs.type}/>
 
@@ -73,7 +66,7 @@ export const Field = ({
                 {label}
                 <div className = "">
                     {input}
-                    <PassVisibiltyBtn mode={"show_pass"}/>
+                    <PassVisibiltyBtn />
                 </div>
             </>
         )
@@ -101,19 +94,18 @@ const Form = ({ configs }) => {
         register, handleSubmit, formState: { errors }
     } = useForm(
         {
-            defaultValues: 
-            configs.model.default_values
+            defaultValues: configs.model.default_values,
+            resolver: zodResolver(
+                configs.model.validation_schema
+            )
         }
     )
 
     function generateFormFields(){
-        const fields = 
-        configs.content.fields.map(
+        const fields = configs.content.fields.map(
             conf => (
-                <Field 
-                validators={configs.model.validators}
-                register={register} 
-                key={conf.input_attrs.type} 
+                <Field register={register} 
+                key={conf.input_attrs.name} 
                 input_attrs={conf.input_attrs}
                 label={conf.label} 
                 field_type={conf.type} />

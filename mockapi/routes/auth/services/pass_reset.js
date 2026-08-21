@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const { doDbQuery } = require("../../helpers.js")
+
 const { generateToken, validateToken } = 
 require("./tokens")
 const nodemailer = require("nodemailer")
@@ -69,12 +71,12 @@ function storageToken(datas, resource){
         collection.push(datas).write()
     } else {
         existing_record.assign(datas).write()
-    }
+    }W
 }
 
 function registerResetPassToken(resource){
     return (req, res, next) => {
-        const tk_datas = generateToken("reset_pass_token")
+        const tk_datas = generateToken("pass_reset_token")
         req.locals.token = tk_datas.token
 
         req.locals.tk_datas = {
@@ -83,6 +85,11 @@ function registerResetPassToken(resource){
                 "create_at": tk_datas.create_at,
                 "expires": tk_datas.expires
             }
+
+        doDbQuery(
+            resource, "pass_reset_tokens", 
+            "get", req.locals.tk_datas
+        )
 
         next()
     }
@@ -119,29 +126,60 @@ function validateResetToken(resource){
 
         req.locals.valid_reset_tk =
         validateToken(
-            reset_tk, "reset_pass_token", resource
+            reset_tk, "pass_reset_token", resource
         )
 
         next()
     }
 }
 
+// /api/auth/pass_resetword_confirm
 function resetPassword(resource){
     return (req, res, next) => {
         req.locals = req.locals ?? {}
 
-        // Consulta do token
+        let q = doDbQuery(
+            resource, "pass_reset_tokens",
+            "get", {code: req.body.reset_code}
+        )
 
+        req.locals.valid_request = false
 
-        // Validação
+        if (
+            // Check reset code
+            (q.success && q.data) &&
+            // Check reset token
+            (
+                q.data.token === req.header("Authentication") &&
+                validateToken(
+                    q.data.token, "pass_reset_token", resource
+                )
+            )
+        ) {
+            req.locals.valid_request = true
+        }
 
+        if (req.locals.valid_request){
+            q = doDbQuery(
+                resource, "users", "update",
+                { "find": {
+                    id: q.data.user_id
+                }, "update": {
+                    password: req.body.new_password
+                }}
+            )
+        }
 
-            // Atualização de senha
+        if (q.error){
+            return res.sendStatus(500)
+        }
+        
+        next()
     }
 }
 
 
 module.exports = { 
     registerResetPassToken, sendPassResetEmail,
-    validateResetToken
+    validateResetToken, resetPassword
 }

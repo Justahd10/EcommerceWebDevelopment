@@ -10,7 +10,8 @@ require('./services/session.js')
 
 const { 
     registerResetPassToken, sendPassResetEmail,
-    validateResetToken
+    validateResetToken,
+    resetPassword
  } = 
 require('./services/pass_reset.js')
 
@@ -25,9 +26,7 @@ function setAuthRoutes(server, resources) {
     ) => {
         
         let tks = ["access_token", "refresh_token"]
-        if (!req.body.remember_me) {
-            tks = tks.slice(0, 1)
-        }
+        if (!req.body.remember_me){tks = tks.slice(0, 1)}
 
         // Response header
         for (const item of tks) {
@@ -79,7 +78,6 @@ function setAuthRoutes(server, resources) {
         sendPassResetEmail(resources),
         (req, res, next) => {
             
-            // success response
             return res.sendStatus(202)
         }
     )
@@ -96,9 +94,22 @@ function setAuthRoutes(server, resources) {
             }
         }
     )
+
+    server.post(
+        "/api/auth/pass_reset_confirm",
+        resetPassword(resources),
+        (req, res, next) => {
+            
+            if (req.locals.valid_request){
+                return res.sendStatus(200)
+            } else {
+                return res.sendStatus(401)
+            }
+        }
+    )
     
 /*     server.get(
-        "/api/auth/reset_password_confirm",
+        "/api/auth/pass_reset_confirm",
         resetPassword(resources),
         (req, res, next) => {
             

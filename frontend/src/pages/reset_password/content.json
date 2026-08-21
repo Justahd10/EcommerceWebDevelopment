@@ -24,6 +24,12 @@
                     }
                 }
             ],
+            "fields_errs": {
+                "usr_email": "Insira um email válido"
+            },
+            "default_values": {
+                "usr_email": ""
+            },
             "actions": [
                 {
                     "act_type": "submit_btn",
@@ -41,7 +47,10 @@
                         "link": "/login"
                     }
                 }
-            ]
+            ],
+            "callback_msgs": {
+                "success": "Caso email esteja registrado você receberá uma notificação para redefinição de senha"
+            }
         }
 },
     
@@ -85,6 +94,16 @@
                     }
                 }
             ],
+            "fields_errs": {
+                "pass_reset_code": "Código deverá conter 6 dígitos",
+                "usr_pass": "Senha deve ter no mínimo 8 caracteres",
+                "usr_pass_confirm": "Senhas não coincidem"
+            },
+            "default_values": {
+                "pass_reset_code": "",
+                "usr_pass": "",
+                "usr_pass_confirm": ""
+            },
             "actions": [
                 {
                     "act_type": "submit_btn",
@@ -93,7 +112,11 @@
                         "label": "Redefinir"
                     }
                 }
-            ]
+            ],
+            "callback_msgs": {
+                "success": "",
+                "error": ""
+            }
         }
     }
 }
