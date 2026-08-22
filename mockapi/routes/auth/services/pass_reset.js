@@ -71,12 +71,14 @@ function storageToken(datas, resource){
         collection.push(datas).write()
     } else {
         existing_record.assign(datas).write()
-    }W
+    }
 }
 
 function registerResetPassToken(resource){
     return (req, res, next) => {
-        const tk_datas = generateToken("pass_reset_token")
+        const tk_datas = generateToken(
+            {type: "pass_reset_token"}
+        )
         req.locals.token = tk_datas.token
 
         req.locals.tk_datas = {

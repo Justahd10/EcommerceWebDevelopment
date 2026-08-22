@@ -18,7 +18,9 @@
         "fields": [
             {
                 "label": "Email",
-                "type": "EmailField",
+                "field_attrs": {
+                    "type": "EmailField"
+                },
                 "input_attrs": {
                     "type": "email",
                     "name": "usr_email"
@@ -26,7 +28,9 @@
             },
             {
                 "label": "Senha",
-                "type": "PasswordField",
+                "field_attrs": {
+                    "type": "PasswordField"
+                },
                 "input_attrs": {
                     "type": "password",
                     "name": "usr_pass"
@@ -34,23 +38,31 @@
             },
             {
                 "label": "Confirmação de senha",
-                "type": "PassConfirmField",
+                "field_attrs": {
+                    "type": "PassConfirmField"
+                },
                 "input_attrs": {
                     "type": "password",
                     "name": "usr_pass_confirm"
                 }
             }
         ],
-        "buttons": [
+        "actions": [
             {
-                "btn_class": "primary-form-button",
-                "btn_type": "submit",
-                "label": "CADASTRAR"
+                "act_type": "submit_btn",
+                "params": {
+                    "class_name": "primary-form-button",
+                    "btn_type": "submit",
+                    "label": "CADASTRAR"
+                }
             },
             {
-                "btn_class": "secondary-form-button",
-                "btn_type": "button",
-                "label": "LOGIN"
+                "act_type": "nav_link",
+                "params": {
+                    "class_name": "secondary-form-button",
+                    "label": "LOGIN",
+                    "link": "/login"
+                }
             }
         ]
     },

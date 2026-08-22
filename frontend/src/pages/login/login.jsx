@@ -1,8 +1,9 @@
-import * as z from "zod"
+import useAuthForm from "../../features/auth/services/useAuthForm.js"
+import { useState } from "react"
 
 /* Access to child components of the page */
 import Header from '../../features/auth/shared/header/header'
-import Form from '../../features/auth/shared/form/form_factory'
+import Form from '../../features/auth/shared/form/form_model.jsx'
 import SocialAuthSection from '../../features/auth/shared/social_auth/social_auth'
 
 import './login.css'
@@ -10,54 +11,21 @@ import './login.css'
 
 
 const LoginPage = ({ page_content }) => {
-    // Form callback function
-    const callback_msgs = page_content.form.callback_msgs
+    // Page level state
+    const [is_pass_visible, setIsPassVisible] = useState(false)
 
-    async function requestLogin(data) {
-        const req_body = JSON.stringify({
-            "email": data.usr_email,
-            "password": data.usr_pass,
-            "remember_me": data.remember_me
-        })
-
-        const response = await fetch(
-            "http://localhost:3000/api/auth/login",
-            {
-                "method": "POST",
-                "body": req_body,
-                "headers": {
-                    "Content-type": "application/json",
-                },
-                "credentials": "include"
-            }
-        )
-
-        const status = await response.status
-        
-        if (status !== 200) {
-            return {
-                msg_class: "",
-                msg: callback_msgs.error
-            }
-        }
-
-        return {
-            msg_class: "",
-            msg: callback_msgs.success
-        }
+    function tooglePassVisibility(){
+        setIsPassVisible(is_pass_visible?false:true)
     }
 
-    // Form schema validation
+    // Get form callback function and fields validation
+    const callback_msgs = page_content.form.callback_msgs
     const fields_errs = page_content.form.fields_errs
 
-    const schema = z.object(
-        {
-            "usr_email": z.email({error: fields_errs.usr_email}),
-            "usr_pass": z.string().min(8, 
-                {error: fields_errs.usr_pass}),
-            "remember_me": z.boolean()
-        }
-    )
+    const { callback_func, schema } = 
+    useAuthForm("LoginPage", {
+        msgs: callback_msgs
+    }, fields_errs)
 
     return (
         <main className = "login-main-content">
@@ -68,13 +36,17 @@ const LoginPage = ({ page_content }) => {
                     model: {
                         default_values: 
                         page_content.form.default_values,
-                        callback_func: requestLogin,
+                        callback_func: callback_func,
                         reset_callback: true,
                         validation_schema: schema
                     },
                 }
-            }/>
-            <SocialAuthSection configs={page_content.socialAuth}/>
+            } page_state={{
+                'state': is_pass_visible,
+                'set_func': tooglePassVisibility
+            }}/>
+            <SocialAuthSection 
+            configs={page_content.socialAuth}/>
         </main>
     )
 }

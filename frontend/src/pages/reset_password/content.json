@@ -17,11 +17,14 @@
             "fields": [
                 {
                     "label": "Email",
-                    "type": "EmailField",
+                    "field_attrs": {
+                        "type": "EmailField"
+                    },
                     "input_attrs": {
                         "type": "email",
                         "name": "usr_email"
-                    }
+                    },
+                    "toogleableByPageState": false
                 }
             ],
             "fields_errs": {
@@ -33,15 +36,16 @@
             "actions": [
                 {
                     "act_type": "submit_btn",
-                    "configs": {
+                    "params": {
                         "class_name": "",
+                        "btn_type": "submit",
                         "label": "ENVIAR"
                     }
 
                 },
                 {
                     "act_type": "nav_link",
-                    "configs": {
+                    "params": {
                         "class_name": "",
                         "label": "Fazer login",
                         "link": "/login"
@@ -71,27 +75,36 @@
             "fields": [
                 {
                     "label": "Código",
-                    "type": "CodeField",
+                    "field_attrs": {
+                        "type": "CodeField"
+                    },
                     "input_attrs": {
                         "type": "text",
                         "name": "pass_reset_code"
-                    }
+                    },
+                    "toogleableByPageState": false
                 },
                 {
                     "label": "Nova senha",
-                    "type": "PasswordField",
+                    "field_attrs": {
+                        "type": "PasswordField"
+                    },
                     "input_attrs": {
                         "type": "password",
                         "name": "usr_pass"
-                    }
+                    },
+                    "toogleableByPageState": true
                 },
                 {
                    "label": "Confirmação da nova senha",
-                    "type": "PassConfirmField",
+                    "field_attrs": {
+                        "type": "PassConfirmField"
+                    },
                     "input_attrs": {
                         "type": "password",
                         "name": "usr_pass_confirm"
-                    }
+                    },
+                    "toogleableByPageState": true
                 }
             ],
             "fields_errs": {
@@ -107,15 +120,16 @@
             "actions": [
                 {
                     "act_type": "submit_btn",
-                    "configs": {
+                    "params": {
                         "class_name": "",
+                        "btn_type": "submit",
                         "label": "Redefinir"
                     }
                 }
             ],
             "callback_msgs": {
-                "success": "",
-                "error": ""
+                "success": "Sua senha foi atualizada",
+                "error": "Código de redefiniação inválido"
             }
         }
     }

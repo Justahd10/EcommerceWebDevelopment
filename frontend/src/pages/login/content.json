@@ -20,7 +20,10 @@
         "fields": [
             {
                 "label": "Email",
-                "type": "EmailField",
+                "field_attrs": {
+                    "type": "EmailField"
+                },
+                "toogleableByPageState": false,
                 "input_attrs": {
                     "type": "email",
                     "name": "usr_email"
@@ -28,7 +31,10 @@
             },
             {
                 "label": "Senha",
-                "type": "PasswordField",
+                "field_attrs": {
+                    "type": "PasswordField"
+                },
+                "toogleableByPageState": true,
                 "input_attrs": {
                     "type": "password",
                     "name": "usr_pass"
@@ -36,7 +42,10 @@
             },
             {
                 "label": "Mantenha-me conectado",
-                "type": "RememberField",
+                "field_attrs": {
+                    "type": "RememberField"
+                },
+                "toogleableByPageState": false,
                 "input_attrs": {
                     "type": "checkbox",
                     "name": "remember_me"
@@ -55,14 +64,15 @@
         "actions": [
             {
                 "act_type": "submit_btn",
-                "configs": {
+                "params": {
                     "class_name": "",
+                    "btn_type": "submit",
                     "label": "LOGIN"
                 }
             },
             {
                 "act_type": "nav_link",
-                "configs": {
+                "params": {
                     "class_name": "",
                     "label": "Me cadastrar",
                     "link": "/cadastrar"
@@ -70,7 +80,7 @@
             },
             {
                 "act_type": "nav_link",
-                "configs": {
+                "params": {
                     "class_name": "",
                     "label": "Esqueci minha senha",
                     "link": "/redefinir-senha"
