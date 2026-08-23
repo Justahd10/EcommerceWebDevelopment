@@ -14,8 +14,7 @@ import Fields from './form_fields'
 */
 // Authentication feature form factory
 const Form = ({ configs, page_state }) => {
-    const {
-        register, handleSubmit, formState: { errors }
+    const { register, handleSubmit, formState: { errors }
     } = useForm(
         {
             defaultValues: configs.model.default_values,

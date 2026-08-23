@@ -88,7 +88,8 @@
             }
         ],
         "callback_msgs": {
-            "error": "Email ou senha inválidos"
+            "auth_error": "Email ou senha inválidos",
+            "connection_err": "Falha ao enviar devido a erro de conexão"
         }
     },
     

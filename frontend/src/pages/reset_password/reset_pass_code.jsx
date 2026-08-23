@@ -32,27 +32,27 @@ const ResetPasswordCodePage = ({ page_content }) => {
     
     useEffect(() => {
         async function getPassResetAuth(token, setAccess){
-            const response = await fetch(
-                "http://localhost:3000/api/auth/pass_reset_validate",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authentication": token
+            try {
+                const response = await fetch(
+                    "http://localhost:3000/api/auth/pass_reset_validate",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authentication": token
+                        }
                     }
-                }
-            )
+                )
 
-            const status_code = await response.status
+                const status_code = await response.status
 
-            if (status_code === 200){
-                setAccess(true)
-            } else {setAccess(false)}
+                if (status_code === 200){
+                    setAccess(true)
+                } else {setAccess(false)}
+            } catch (e){setAccess(false)}
         }
 
-        getPassResetAuth(
-            params.token, setValidAccess
-        )
+        getPassResetAuth(params.token, setValidAccess)
     }, [params.token])
 
     const page = (

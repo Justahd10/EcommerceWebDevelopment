@@ -129,7 +129,8 @@
             ],
             "callback_msgs": {
                 "success": "Sua senha foi atualizada",
-                "error": "Código de redefiniação inválido"
+                "auth_error": "Código de redefiniação inválido",
+                "connection_err": "Falha ao enviar devido a erro de conexão"
             }
         }
     }

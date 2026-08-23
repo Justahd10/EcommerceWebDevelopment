@@ -5,3 +5,14 @@ html, body, #root {
 button {
     cursor: pointer;
 }
+
+.disconnected-box{
+    position: relative; bottom: 0vh; transform: translate(40vw);
+    transition: bottom 1s;
+}
+
+@starting-style{
+    .disconnected-box{
+        bottom: 80vh;
+    }
+}

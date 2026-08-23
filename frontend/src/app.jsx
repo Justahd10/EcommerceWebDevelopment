@@ -1,8 +1,9 @@
-import { Component } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useContext } from 'react'
 
 /* Contexts */
 import { AuthProvider } from './contexts/auth.jsx'
+import { ConnectionContext, ConnectionDialog } 
+from './contexts/connection.jsx'
 
 /* Routes */
 import routes from './routes/routes.jsx'
@@ -11,8 +12,13 @@ import { RouterProvider } from 'react-router-dom'
 
 
 const App = () => {
+  const { user_connected } = useContext(ConnectionContext)
+
   return (
-    <RouterProvider router = {routes} />
+    <AuthProvider>
+      <RouterProvider router = {routes} />
+      {!user_connected && <ConnectionDialog />}
+    </AuthProvider>
   )
 }
 

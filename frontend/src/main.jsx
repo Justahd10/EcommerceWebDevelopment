@@ -1,8 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-// Contexts
-import { AuthProvider } from './contexts/auth.jsx'
+/* Contexts */
+import { ConnectionProvider } 
+from './contexts/connection.jsx'
 
 import App from './app.jsx'
 import './styles.css'
@@ -10,5 +11,9 @@ import './styles.css'
 
 
 createRoot(document.getElementById('root')).render(
-  <App />
+  <StrictMode>
+    <ConnectionProvider>
+      <App />
+    </ConnectionProvider>
+  </StrictMode>
 )

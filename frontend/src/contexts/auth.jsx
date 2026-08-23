@@ -38,8 +38,6 @@ export const AuthProvider = ({ children }) => {
     const [has_auth, setAuth] = useState(false)
     const [fetching, setFetching] = useState(true)
 
-    // Trigger used by pages components
-    // to alert authentication fails
     function toogleAuthState(value){
         setAuth(value)
     }
@@ -80,10 +78,8 @@ export function SetProtectedContent({ page_component }) {
     if (auth_state.has_auth) {
         return page_component
 
-    } else if (auth_state.fetching) {
-        return <h1>Aguardando autenticação...</h1>
-
-    } else {
+    } else if (!auth_state.fetching) {
         return <Navigate to="/login" replace />
+
     }
 }
