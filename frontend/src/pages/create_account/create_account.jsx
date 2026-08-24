@@ -8,9 +8,7 @@ from "../../features/auth/shared/social_auth/social_auth";
 import bannerImg from "../../assets/create_account_banner.jpg";
 import './create_account.css'
 
-/*
 
-*/
 
 const CreateAccountPage = ({ page_content }) => {
     return (
