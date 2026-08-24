@@ -1,0 +1,12 @@
+.products-carousel-section {
+  overflow: hidden;
+}
+
+.products-container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.carousel-btn{
+    fill: black; width: 24px; height: 24px;
+}

@@ -4,6 +4,9 @@ from "react-router-dom";
 /*
         Pages
 */
+import CreateAccountPageContent from "../pages/create_account/content.json"
+import CreateAccountPage from "../pages/create_account/create_account.jsx";
+
 import LoginPage from "../pages/login/login";
 import loginPageContent from "../pages/login/content.json"
 
@@ -23,7 +26,7 @@ const routes = createBrowserRouter(
     [
         {
             "path": "/cadastrar",
-            "element": <h1>Página de criação de conta</h1>
+            "element": <CreateAccountPage page_content={CreateAccountPageContent}/>
         },
         {
             "path": "/login",

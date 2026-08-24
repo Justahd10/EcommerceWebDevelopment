@@ -1,0 +1,12 @@
+.product-card {
+  flex: 0 0 50%;
+  min-width: 0;
+}
+
+.product-card img {
+  width: 200px; height: 250px; object-fit: contain; 
+}
+
+.shop-cart-act-btn{
+    fill: black; width: 24px; height: 24px;
+}

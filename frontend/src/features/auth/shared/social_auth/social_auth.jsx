@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"
-
 import "./social_auth.css"
 
 
@@ -9,21 +7,21 @@ import "./social_auth.css"
 */
 export const TextDivider = ({ label }) => {
     return (
-        <div className = "">
-            <hr className = ""/>
-            <span className = "">{label}</span>
-            <hr className = ""/>
+        <div className="">
+            <hr className=""/>
+            <span className="">{label}</span>
+            <hr className=""/>
         </div>
     )
 }
 
 export const SocialLoginButton = ({ label, img_url }) => {
     return (
-        <button className = "" type = "button">
-            <img className = "" 
+        <button className="" type="button">
+            <img className="" 
             alt = "Logo de login social"
             src = {img_url} />
-            <span className = "">{label}</span>
+            <span className="">{label}</span>
         </button>
     )
 }
@@ -54,19 +52,3 @@ const SocialAuthSection = ({ configs }) => {
 
 
 export default SocialAuthSection
-
-
-/*
-        Storybook documentation
-*/
-SocialLoginButton.propTypes = {
-    label: PropTypes.string.isRequired,
-    img_url: PropTypes.oneOf([
-        '/src/features/auth/assets/google_icon.png',
-        '/src/features/auth/assets/facebook_icon.png'
-    ])
-}
-
-SocialAuthSection.propTypes = {
-    configs: PropTypes.object.isRequired
-}

@@ -31,7 +31,7 @@ export const SubTitle = ({
 */
 const Header = ({ configs }) => {
     return (
-        <header>
+        <header className="">
             <div className = "">
                 {
                     configs.logo_img &&

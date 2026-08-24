@@ -1,6 +1,6 @@
+/* Contexts */
 import { useContext } from 'react'
 
-/* Contexts */
 import { AuthProvider } from './contexts/auth.jsx'
 import { ConnectionContext, ConnectionDialog } 
 from './contexts/connection.jsx'
@@ -15,10 +15,10 @@ const App = () => {
   const { user_connected } = useContext(ConnectionContext)
 
   return (
-    <AuthProvider>
-      <RouterProvider router = {routes} />
+    <>
+      <RouterProvider router={routes} />
       {!user_connected && <ConnectionDialog />}
-    </AuthProvider>
+    </>
   )
 }
 

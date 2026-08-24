@@ -1,83 +1,245 @@
 {
-    "header": {
-        "logo_img": {
-            "src": "/src/features/auth/assets/online_shop_logo_icon.jpg",
-            "alt": "Logo Online Shop"
-        },
-        "title": {
-            "name": "Tech Shop",
-            "slogan": "A melhor para o consumidor online"
-        },
-        "subtitle": {
-            "title": "Crie sua conta",
-            "desc": "e desbloqueie ofertas exclusivas"
+    "aside": {
+        "type": "banner",
+        "carousel": {
+            "type": "auto",
+            "items": [
+                {
+                    "card_class": "product-card",
+                    "tags": {
+                        "class_name": "display: none;",
+                        "configs": [
+                            {
+                                "class_name": "",
+                                "label": "NOVO"
+                            }
+                        ]
+                    },
+                    "img": "../../assets/celular.png",
+                    "alt": "Imagem de Produto 1",
+                    "name": "Smartphone Motorola G56 256GB",
+                    "desc": "Cor cinza 5G 8GB de RAM 6,7 Full HD+ Câm. Dupla + Selfie 32MP",
+                    "current_price": "719,00",
+                    "previus_price": "1299,00",
+                    "actions": [
+                        {
+                            "btn_class": "",
+                            "icon_class": "shop-cart-act-btn",
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "viewBox": "0 -960 960 960",
+                            "path": "M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"
+                        }
+                    ]
+                },
+                {
+                    "card_class": "product-card",
+                    "tags": {
+                        "class_name": "display: none;",
+                        "configs": [
+                            {
+                                "class_name": "",
+                                "label": "NOVO"
+                            }
+                        ]
+                    },
+                    "img": "../../assets/fone_ouvido.png",
+                    "alt": "Imagem de produto",
+                    "name": "Fone de Ouvido Bluetooth Philips TAH2209BK",
+                    "desc": "Sem Fio Preto com Microfone e Bateria de Longa Duração",
+                    "current_price": "137,57",
+                    "previus_price": "",
+                    "actions": [
+                        {
+                            "btn_class": "",
+                            "icon_class": "shop-cart-act-btn",
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "viewBox": "0 -960 960 960",
+                            "path": "M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"
+                        }
+                    ]
+                },
+                {
+                    "card_class": "product-card",
+                    "tags": {
+                        "class_name": "display: none;",
+                        "configs": [
+                            {
+                                "class_name": "",
+                                "label": "NOVO"
+                            }
+                        ]
+                    },
+                    "img": "../../assets/tablet.png",
+                    "alt": "Imagem de produto",
+                    "name": "Tablet Samsung Galaxy Tab A11+",
+                    "desc": "6GB RAM 128GB 11 Android 16 Octa-Core Wi-Fi",
+                    "current_price": "1.421,97",
+                    "previus_price": "",
+                    "actions": [
+                        {
+                            "btn_class": "",
+                            "icon_class": "shop-cart-act-btn",
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "viewBox": "0 -960 960 960",
+                            "path": "M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"
+                        }
+                    ]
+                },
+                {
+                    "card_class": "product-card",
+                    "tags": {
+                        "class_name": "display: none;",
+                        "configs": [
+                            {
+                                "class_name": "",
+                                "label": "NOVO"
+                            }
+                        ]
+                    },
+                    "img": "../../assets/smartwatch.png",
+                    "alt": "Imagem de produto",
+                    "name": "Smartwatch Redmi Xiaomi",
+                    "desc": "5 Active Preto Xm826pra Xiaomi",
+                    "current_price": "1.421,97",
+                    "previus_price": "",
+                    "actions": [
+                        {
+                            "btn_class": "",
+                            "icon_class": "shop-cart-act-btn",
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "viewBox": "0 -960 960 960",
+                            "path": "M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"
+                        }
+                    ]
+                },
+                {
+                    "card_class": "product-card",
+                    "tags": {
+                        "class_name": "display: none;",
+                        "configs": [
+                            {
+                                "class_name": "",
+                                "label": "NOVO"
+                            }
+                        ]
+                    },
+                    "img": "../../assets/pen-tablet.png",
+                    "alt": "Imagem de produto",
+                    "name": "Tablet gráfico HUION HS64",
+                    "desc": "6 Polegadas Tablets de Desenho Caneta Digital Escrita Prancheta 8192 Stylus para Android Windows Mac Laptop",
+                    "current_price": "1.421,97",
+                    "previus_price": "",
+                    "actions": [
+                        {
+                            "btn_class": "",
+                            "icon_class": "shop-cart-act-btn",
+                            "xmlns": "http://www.w3.org/2000/svg",
+                            "viewBox": "0 -960 960 960",
+                            "path": "M223.5-103.5Q200-127 200-160t23.5-56.5Q247-240 280-240t56.5 23.5Q360-193 360-160t-23.5 56.5Q313-80 280-80t-56.5-23.5Zm400 0Q600-127 600-160t23.5-56.5Q647-240 680-240t56.5 23.5Q760-193 760-160t-23.5 56.5Q713-80 680-80t-56.5-23.5ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"
+                        }
+                    ]
+                }
+            ],
+            "action_btns": {
+                "class_name": "product-card",
+                "icon_conf": {
+                    "previus_btn": {
+                        "class_name": "carousel-btn",
+                        "xmlns": "http://www.w3.org/2000/svg",
+                        "path": "M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z",
+                        "viewBox": "0 -960 960 960"
+                    },
+                    "next_btn": {
+                        "class_name": "carousel-btn",
+                        "xmlns": "http://www.w3.org/2000/svg",
+                        "path": "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z",
+                        "viewBox": "0 -960 960 960"
+                    }
+                }
+            }
         }
     },
+    "main": {
+        "header": {
+            "logo_img": {
+                "src": "/src/features/auth/assets/online_shop_logo_icon.jpg",
+                "alt": "Logo Online Shop"
+            },
+            "title": {
+                "name": "Tech Shop",
+                "slogan": "A melhor para o consumidor online"
+            },
+            "subtitle": {
+                "title": "Crie sua conta",
+                "desc": "e desbloqueie ofertas exclusivas"
+            }
+        },
 
-    "form": {
-        "fields": [
-            {
-                "label": "Email",
-                "field_attrs": {
-                    "type": "EmailField"
+        "form": {
+            "fields": [
+                {
+                    "label": "Email",
+                    "field_attrs": {
+                        "type": "EmailField"
+                    },
+                    "input_attrs": {
+                        "type": "email",
+                        "name": "usr_email"
+                    }
                 },
-                "input_attrs": {
-                    "type": "email",
-                    "name": "usr_email"
-                }
-            },
-            {
-                "label": "Senha",
-                "field_attrs": {
-                    "type": "PasswordField"
+                {
+                    "label": "Senha",
+                    "field_attrs": {
+                        "type": "PasswordField"
+                    },
+                    "input_attrs": {
+                        "type": "password",
+                        "name": "usr_pass"
+                    }
                 },
-                "input_attrs": {
-                    "type": "password",
-                    "name": "usr_pass"
+                {
+                    "label": "Confirmação de senha",
+                    "field_attrs": {
+                        "type": "PassConfirmField"
+                    },
+                    "input_attrs": {
+                        "type": "password",
+                        "name": "usr_pass_confirm"
+                    }
                 }
-            },
-            {
-                "label": "Confirmação de senha",
-                "field_attrs": {
-                    "type": "PassConfirmField"
+            ],
+            "actions": [
+                {
+                    "act_type": "submit_btn",
+                    "params": {
+                        "class_name": "primary-form-button",
+                        "btn_type": "submit",
+                        "label": "CADASTRAR"
+                    }
                 },
-                "input_attrs": {
-                    "type": "password",
-                    "name": "usr_pass_confirm"
+                {
+                    "act_type": "nav_link",
+                    "params": {
+                        "class_name": "secondary-form-button",
+                        "label": "LOGIN",
+                        "link": "/login"
+                    }
                 }
-            }
-        ],
-        "actions": [
-            {
-                "act_type": "submit_btn",
-                "params": {
-                    "class_name": "primary-form-button",
-                    "btn_type": "submit",
-                    "label": "CADASTRAR"
+            ]
+        },
+        
+        "socialAuth": {
+            "btns_attrs": [
+                {
+                    "label": "Google",
+                    "img_url": "/src/features/auth/assets/google_icon.png"
+                },
+                {
+                    "label": "Facebook",
+                    "img_url": "/src/features/auth/assets/facebook_icon.png"
                 }
-            },
-            {
-                "act_type": "nav_link",
-                "params": {
-                    "class_name": "secondary-form-button",
-                    "label": "LOGIN",
-                    "link": "/login"
-                }
-            }
-        ]
-    },
-    
-    "socialAuth": {
-        "btns_attrs": [
-            {
-                "label": "Google",
-                "img_url": "/src/features/auth/assets/google_icon.png"
-            },
-            {
-                "label": "Facebook",
-                "img_url": "/src/features/auth/assets/facebook_icon.png"
-            }
-        ],
-        "label": "ou cadastre-se com"
+            ],
+            "label": "ou cadastre-se com"
+        }
     }
 }
