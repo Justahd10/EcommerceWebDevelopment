@@ -1,48 +1,111 @@
+const { doDbQuery } = require("../../helpers.js")
+const { generateToken } = require('./tokens.js')
 const { validateToken } = require('./tokens.js')
 
-// "/api/refresh"
-function refreshToken(resource) {
+
+
+/* 
+        Endpoints: /api/auth/login, /api/users/register
+*/ 
+function createAuthTokens(resource) {
+    return (req, res, next) => {
+
+    // Determine required tokens
+    const tks = ["access_token"]
+    if (req.body.remember_me) {
+        tks.push("refresh_token")
+    }
+
+    for (const tk of tks){
+
+        // Create token
+        const creds = generateToken(
+            { "type": "auth_token", "name": tk },
+            {
+                "id": req.locals.usr_id,
+                "email": req.body.email
+            }
+        )
+
+        if (tk === "refresh_token") {
+            // Storage refresh token into database
+            doDbQuery(
+                resource, "refresh_tokens",
+                "push", {
+                    "user_id": req.locals.usr_id,
+                    "token": creds.token,
+                    "create_at": creds.create_at,
+                    "expires": creds.expires
+                }
+            )
+        }
+
+        // Storage datas in local route runtime
+        req.locals[tk] = creds
+    }
+
+    next()
+}}
+
+/* 
+        Endpoints: /api/auth/refresh
+*/
+function refreshAccessToken(resource) {
     return (req, res, next) => {
     req.locals = req.locals ?? {}
     
+    // get refresh token from request
     const refresh_tk = req.cookies.refresh_token
 
-    const validated = 
-    validateToken(refresh_tk, "auth_token", resource)
+    // check validation result
+    if (
+        refresh_tk && 
+        validateToken(refresh_tk, "auth_token", resource)
+    ) {
 
-    if (refresh_tk && validated) {
-        const user = resource.db.get("users")
-        .find({"id": register.user_id}).value()
+        // Create new access token using the datas
+        const token_datas = generateToken({
+            'type': "auth_token", 
+            'name': "access_token"
+        }, {
+            'id': refresh_tk.split(" ")[1], 
+            'email': refresh_tk.split(" ")[2]
+        })
 
-        const creds = createAuth(
-            "access_token", user.id, user.email
-        )
-
-        req.locals.access_token = creds
+        // Storage in local route runtime
+        req.locals.access_token_datas = token_datas
 
         next()
-    } else {
-        return res.sendStatus(401)
     }
+    // Unsuccessful case return
+    else return res.sendStatus(401)
 }}
 
-// Used by all protected endpoints
-function verifyAccessToken(req, res, next){
-    req.locals = req.locals ?? {}
+/*
+        Endpoints: Used by all protected endpoints
+*/
+function verifyAccessToken(resource){
+    return (req, res, next) => {
+        req.locals = req.locals ?? {}
 
-    const access_tk = req.cookies.access_token
-    
-    if (
-        access_tk && 
-        validateToken(access_tk, "auth_token")
-    ){
-        req.locals.usr_id = access_tk.split(" ")[1]
-        next()
-
-    } else {
-        return res.sendStatus(401)
+        // get access token from request
+        const access_tk = req.cookies.access_token
+        
+        // check validation result
+        if (
+            access_tk && 
+            validateToken(access_tk, "auth_token", resource)
+        ){
+            req.locals.usr_id = access_tk.split(" ")[1]
+            next()
+        }
+        // Unsuccessful case return
+        else return res.sendStatus(401)
     }
 }
 
 
-module.exports = {refreshToken, verifyAccessToken}
+module.exports = {
+    createAuthTokens, refreshAccessToken, 
+    verifyAccessToken
+}

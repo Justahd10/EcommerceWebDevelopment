@@ -1,4 +1,4 @@
-import useAuthForm from "../../features/auth/services/useAuthForm.js"
+import { useAuthForm } from "../../features/auth/services/auth_form_hooks.js"
 
 /* Access to child components of the page */
 import Header from '../../features/auth/shared/header/header'

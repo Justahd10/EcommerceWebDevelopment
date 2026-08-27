@@ -126,12 +126,7 @@
                         "label": "Redefinir"
                     }
                 }
-            ],
-            "callback_msgs": {
-                "success": "Sua senha foi atualizada",
-                "auth_error": "Código de redefiniação inválido",
-                "connection_err": "Falha ao enviar devido a erro de conexão"
-            }
+            ]
         }
     }
 }

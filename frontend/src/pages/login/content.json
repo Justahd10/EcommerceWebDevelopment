@@ -52,14 +52,15 @@
                 }
             }
         ],
-        "fields_errs": {
-            "usr_email": "Insira um email válido",
-            "usr_pass": "Senha deve ter no mínimo 8 caracteres"
-        },
         "default_values": {
             "usr_email": "",
             "usr_pass": "",
             "remember_me": false
+        },
+        "fields_errs": {
+            "usr_email": "Insira um email válido",
+            "usr_pass": "Senha deve ter no mínimo 8 caracteres",
+            "remember_me": ""
         },
         "actions": [
             {
@@ -86,11 +87,7 @@
                     "link": "/redefinir-senha"
                 }
             }
-        ],
-        "callback_msgs": {
-            "auth_error": "Email ou senha inválidos",
-            "connection_err": "Falha ao enviar devido a erro de conexão"
-        }
+        ]
     },
     
     "socialAuth": {

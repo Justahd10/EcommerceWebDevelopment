@@ -49,27 +49,22 @@ function getTokenDatas(tk, resource){
     return token
 }
 
-function validateAuthToken(tk, resource = null){
+function validateAuthToken(tk, resource){
     // Validate access token
     if (
         tk.includes("access_token") &&
-        !(new Date(token.split(" ")[4]
+        !(new Date(tk.split(" ")[4]
         ) > new Date(Date.now()))
-    ){
-        return false
-    } 
+    ){ return false }
 
-    const tk_datas = 
-    getTokenDatas(tk, resource)
+    const tk_datas = getTokenDatas(tk, resource)
 
     // Validate refresh token
     if (
         !tk_datas ||
         !(new Date(tk_datas.expires
         )) > new Date(Date.now())
-    ){
-        return false
-    }
+    ){ return false }
 
     return true
 }

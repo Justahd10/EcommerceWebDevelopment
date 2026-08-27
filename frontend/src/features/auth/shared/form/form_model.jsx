@@ -27,13 +27,11 @@ const Form = ({ configs, page_state }) => {
     const [callback, setCallBack] =
     useState({"msg": "", "msg_class": ""})
 
-    const onSubmit = async (datas) => {
-        const callback_func =
-        configs.model.callback_func
+    const onSubmit = async (data) => {
+        const callback_func = configs.model.callback_func
 
         if (callback_func){
-            const result = 
-            await callback_func(datas)
+            const result = await callback_func(data)
             setCallBack(result)
         }
     }

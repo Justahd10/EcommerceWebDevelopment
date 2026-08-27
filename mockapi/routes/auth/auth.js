@@ -1,85 +1,114 @@
-// Middlwares functionalitys
+const { sendResponse } = require('../helpers.js')
+const { getUser } = require('../user/services/middlewares.js')
 const { 
-    getUserByCredentials, createAuthentication
- } = 
-require('./services/login.js')
-const { 
-    refreshToken, verifyAccessToken
- } = 
-require('./services/session.js')
+    createAuthTokens, refreshAccessToken, verifyAccessToken
+ } = require('./services/session.js')
 
 const { 
     registerResetPassToken, sendPassResetEmail,
-    validateResetToken,
-    resetPassword
- } = 
-require('./services/pass_reset.js')
-
+    validateResetToken, resetPassword
+ } = require('./services/pass_reset.js')
 
 
 
 function setAuthRoutes(server, resources) {
+
     server.post("/api/auth/login",
-        getUserByCredentials(resources, ["email", "password"]), 
-        createAuthentication(resources), (
-        req, res, next
-    ) => {
-        
-        let tks = ["access_token", "refresh_token"]
-        if (!req.body.remember_me){tks = tks.slice(0, 1)}
-
-        // Response header
-        for (const item of tks) {
-            res.cookie(
-                item, req.locals[item].token,
-                {
-                    "expires": req.locals[item].expires,
-                    "httpOnly": true
-                }
-            )
-        }
-
-        // Response body
-        res.status(200).json(
-            {
-                "status": "success",
-                "email": req.locals.email,
-                "timestamp": new Date(Date.now()).toISOString()
+        getUser(resources, ["email", "password"]),
+        (req, res, next) => { 
+            if (!req.locals.user_datas){
+                return sendResponse(res,
+                    401,
+                    'unsuccessful',
+                    'Invalid credentials',
+                    {}
+                )
             }
-        )
-    })
+
+            next()
+        },
+        createAuthTokens(resources), 
+        (req, res) => {
+        
+            let tks = ["access_token", "refresh_token"]
+            if (!req.body.remember_me){tks = tks.slice(0, 1)}
+
+            // Response header
+            for (const item of tks) {
+                res.cookie(
+                    item, req.locals[item].token,
+                    {
+                        "expires": req.locals[item].expires,
+                        "httpOnly": true
+                    }
+                )
+            }
+            
+            // Response body
+            return sendResponse(res, 200, "successful", "", {
+                'id': req.locals.id,
+                'email': req.body.email,
+                'timestamp': new Date(Date.now()).toISOString()
+            })
+        }
+    )
 
     server.get("/api/auth/test", 
-        verifyAccessToken, (req, res, next) => {
-            res.sendStatus(200)
+        verifyAccessToken(resources),
+        (req, res, next) => {
+            return sendResponse(res,
+                200, 
+                "successful",
+                null,
+                {}
+            )
         }
     )
 
     server.get("/api/auth/refresh", 
-        refreshToken(resources), (req, res, next) => {
+        refreshAccessToken(resources), (req, res, next) => {
         
         // Response header
         res.cookie(
-            "access_token", req.locals.access_token.token,
+            "access_token", req.locals.access_token_datas.token,
             {
-                "expires": req.locals.access_token.expires,
+                "expires": req.locals.access_token_datas.expires,
                 "httpOnly": true
             }
         )
 
-        // Resposne body
-        res.sendStatus(200)
+        // Response body
+        return sendResponse(res,
+            200,
+            'successful',
+            null,
+            {}
+        )
     })
 
     server.post(
         "/api/auth/pass_reset_request",
-        getUserByCredentials(resources, ['email']),
+        getUser(resources, ['email']),
+        (req, res, next) => {
+            if (!req.locals.user_datas){
+                return sendResponse(res, 
+                    202, 
+                    'successful', 
+                    null, 
+                    {}
+                )
+            }
+
+            next()
+        },
         registerResetPassToken(resources),
         sendPassResetEmail(resources),
-        (req, res, next) => {
-            
-            return res.sendStatus(202)
-        }
+        (req, res, next) => sendResponse(res, 
+            202, 
+            'successful', 
+            null, 
+            {}
+        )
     )
 
     server.post(
@@ -88,9 +117,19 @@ function setAuthRoutes(server, resources) {
         (req, res, next) => {
             
             if (req.locals.valid_reset_tk){
-                return res.sendStatus(200)
+                return sendResponse(res,
+                    200, 
+                    'successful',
+                    null,
+                    {}
+                )
             } else {
-                return res.sendStatus(401)
+                return sendResponse(res,
+                    401,
+                    'unsuccessful',
+                    'Invalid token',
+                    {}
+                )
             }
         }
     )
@@ -101,24 +140,22 @@ function setAuthRoutes(server, resources) {
         (req, res, next) => {
             
             if (req.locals.valid_request){
-                return res.sendStatus(200)
+                return sendResponse(res,
+                    200,
+                    'successful',
+                    null,
+                    {}
+                )
             } else {
-                return res.sendStatus(401)
+                return sendResponse(res,
+                    401,
+                    'unsuccessful',
+                    'Invadli password reset code',
+                    {}
+                )
             }
         }
     )
-    
-/*     server.get(
-        "/api/auth/pass_reset_confirm",
-        resetPassword(resources),
-        (req, res, next) => {
-            
-            // Success response
-
-
-            // Unsuccessful response
-        }
-    ) */
 }
 
 

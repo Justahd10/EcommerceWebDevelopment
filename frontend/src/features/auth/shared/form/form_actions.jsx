@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { AuthContext } from "../../../../contexts/auth"
 import { Link } from "react-router-dom"
 
 
@@ -6,7 +8,7 @@ import { Link } from "react-router-dom"
         Actions strategy
 */
 function createFormAction(act_type, params){
-    function createLinkStrategy(){
+    const LinkAction = ()=>{
         return (
             <Link to={params.link} 
             className="">
@@ -15,18 +17,21 @@ function createFormAction(act_type, params){
         )
     }
 
-    function createButtonStrategy(){
+    const ButtonAction = ()=>{
+        const { auth_state } = useContext(AuthContext)
+
         return (
             <button className="" 
-            type={params.btn_type}>
+            type={params.btn_type} 
+            disabled={auth_state.fetching || false}>
                 {params.label}
             </button>
         )
     }
 
     const actions_strategy = {
-        "nav_link": createLinkStrategy,
-        "submit_btn": createButtonStrategy
+        "nav_link": LinkAction,
+        "submit_btn": ButtonAction
     }
 
     return actions_strategy[act_type](params)

@@ -1,0 +1,87 @@
+{
+    "base_url": "http://localhost:3000/api",
+    "endpoints": {
+        "/auth": {
+            "/login": {
+                "default": {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "credentials": "include"
+                }
+            },
+            "/pass_reset_request": {
+                "default": {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    }
+                }
+            },
+            "/pass_reset_validate": {
+                "default": {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    }
+                }
+            },
+            "/pass_reset_confirm": {
+                "default": {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "/register": {
+                "default": {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "credentials": "include"
+                }
+            }
+        }
+    },
+    "responses": {
+        "connection_err": {
+            "msg_class": "",
+            "message": "Não foi possível o envio dos dados ao servidor"
+        },
+        "/auth": {
+            "/login": {
+                "unathourized": {
+                    "code": 401, "msg_class": "", 
+                    "message": "Email ou senha inválidos"
+                },
+                "success": {
+                    "code": 200, "msg_class": "", 
+                    "message": ""
+                }
+            },
+            "/pass_reset_confirm": {
+                "success": {
+                    "code": 200, "msg_class": "", 
+                    "message": "Sua senha foi atualizada"
+                },
+                "unathourized": {
+                    "code": 401, "msg_class": "", 
+                    "message": "Código de redefiniação inválido"
+                }
+            }
+        },
+        "/users": {
+            "/register": {
+                "conflict": {
+                    "code": 409, "msg_class": "", 
+                    "message": "Email já registrado"
+                }
+            }
+        }
+    }
+}

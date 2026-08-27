@@ -29,5 +29,16 @@ function doDbQuery(routers, name, query, datas){
     return q_result
 }
 
+// Used for all api routes
+function sendResponse(
+    res, httpCode, status, error, data
+){
+    return res.status(httpCode).json({
+        'status': status,
+        'error': error,
+        'data': data
+    })
+}
 
-module.exports = { doDbQuery }
+
+module.exports = { doDbQuery, sendResponse }

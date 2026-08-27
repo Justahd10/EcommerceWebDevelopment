@@ -1,4 +1,5 @@
-import useAuthForm from "../../features/auth/services/useAuthForm.js"
+import { useAuthForm, usePassFieldState} 
+from "../../features/auth/services/auth_form_hooks";
 
 import { useEffect, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
@@ -10,12 +11,8 @@ import Form from '../../features/auth/shared/form/form_model.jsx'
 
 
 const ResetPasswordCodePage = ({ page_content }) => {
+    const { is_pass_visible, tooglePassVisibility } = usePassFieldState()
     const [valid_access, setValidAccess] = useState(null)
-    const [is_pass_visible, setIsPassVisible] = useState(false)
-
-    function tooglePassVisibility(){
-        setIsPassVisible(is_pass_visible?false:true)
-    }
 
     let params = useParams()
 

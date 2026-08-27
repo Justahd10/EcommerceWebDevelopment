@@ -15,10 +15,10 @@ const App = () => {
   const { user_connected } = useContext(ConnectionContext)
 
   return (
-    <>
+    <AuthProvider>
       <RouterProvider router={routes} />
       {!user_connected && <ConnectionDialog />}
-    </>
+    </AuthProvider>
   )
 }
 
